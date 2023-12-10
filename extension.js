@@ -24,6 +24,13 @@ function activate(context) {
 		vscode.window.showInformationMessage('Hello World from Synergy DBL Tools!');
 	});
 
+	vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name", function(){
+		let fileName = vscode.window.activeTextEditor.document.fileName;
+		vscode.env.clipboard.writeText(fileName)
+	});
+
+
+
 	context.subscriptions.push(disposable);
 }
 

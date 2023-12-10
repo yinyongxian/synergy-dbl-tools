@@ -3,6 +3,7 @@
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
   "version": "0.0.1",
+  "publisher": "YongXian Yin",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -12,10 +13,30 @@
   "activationEvents": [],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "synergy-dbl-tools.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "synergy-dbl-tools.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-file-name",
+        "title": "Copy File Name"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "synergy-dbl-tools.copy-file-name",
+          "group": "9_cutcopypaste"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "synergy-dbl-tools.copy-file-name",
+          "group": "2_cutcopypaste"
+        }
+      ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
