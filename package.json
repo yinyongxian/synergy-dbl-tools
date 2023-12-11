@@ -25,6 +25,10 @@
       {
         "command": "synergy-dbl-tools.copy-file-name-without-extension",
         "title": "Copy File Name Without Extension"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-break-command",
+        "title": "Copy Break Command"
       }
     ],
     "menus": {
@@ -36,6 +40,10 @@
         {
           "command": "synergy-dbl-tools.copy-file-name-without-extension",
           "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-break-command",
+          "group": "9_cutcopypaste"
         }
       ],
       "editor/title/context": [
@@ -45,6 +53,10 @@
         },
         {
           "command": "synergy-dbl-tools.copy-file-name-without-extension",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-break-command",
           "group": "2_copy"
         }
       ]

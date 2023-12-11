@@ -24,12 +24,21 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyBase);
 
-	var copyName= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name-without-extension", function(){
+	var copyBreakCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name-without-extension", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let name = path.parse(fileName).name;
 		vscode.env.clipboard.writeText(name)
 	});
-	context.subscriptions.push(copyName);
+	context.subscriptions.push(copyBreakCommand);
+
+	var copyBreakCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-break-command", function(){
+		let fileName = vscode.window.activeTextEditor.document.fileName;
+		let name = path.parse(fileName).name;
+		let line = vscode.window.activeTextEditor.selection.start.line + 1
+		let breakCommand = `b ${name}:${line}`
+		vscode.env.clipboard.writeText(breakCommand)
+	});
+	context.subscriptions.push(copyBreakCommand);
 
 
 }
