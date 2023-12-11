@@ -1,4 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
+
+const path = require('path');
+
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 
@@ -14,24 +17,21 @@ function activate(context) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "synergy-dbl-tools" is now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('synergy-dbl-tools.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Synergy DBL Tools!');
-	});
-
-	vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name", function(){
+	var copyBase= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
-		vscode.env.clipboard.writeText(fileName)
+		let basename = path.parse(fileName).base;
+		vscode.env.clipboard.writeText(basename)
 	});
+	context.subscriptions.push(copyBase);
+
+	var copyName= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name-without-extension", function(){
+		let fileName = vscode.window.activeTextEditor.document.fileName;
+		let name = path.parse(fileName).name;
+		vscode.env.clipboard.writeText(name)
+	});
+	context.subscriptions.push(copyName);
 
 
-
-	context.subscriptions.push(disposable);
 }
 
 // This method is called when your extension is deactivated
