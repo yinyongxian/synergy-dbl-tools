@@ -79,6 +79,39 @@ function activate(context) {
 		vscode.env.clipboard.writeText(text)
 	});
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
+
+	var copyExamineCommand = vscode.commands.registerCommand("synergy-dbl-tools.copy-examine-command", function(){
+		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
+		if (!selectionIsEmpty) {
+			let doc = vscode.window.activeTextEditor.document;
+			let selectedText = doc.getText(vscode.window.activeTextEditor.selection);
+			let text =  `b ${selectedText}`;
+			vscode.env.clipboard.writeText(text)
+		}
+	});
+	context.subscriptions.push(copyExamineCommand);
+
+	var copyWatchCommand = vscode.commands.registerCommand("synergy-dbl-tools.copy-watch-command", function(){
+		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
+		if (!selectionIsEmpty) {
+			let doc = vscode.window.activeTextEditor.document;
+			let selectedText = doc.getText(vscode.window.activeTextEditor.selection);
+			let text =  `w ${selectedText}`;
+			vscode.env.clipboard.writeText(text)
+		}
+	});
+	context.subscriptions.push(copyWatchCommand);
+
+	var copyDepositCommand = vscode.commands.registerCommand("synergy-dbl-tools.copy-deposit-command", function(){
+		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
+		if (!selectionIsEmpty) {
+			let doc = vscode.window.activeTextEditor.document;
+			let selectedText = doc.getText(vscode.window.activeTextEditor.selection);
+			let text =  `deposit ${selectedText} = `;
+			vscode.env.clipboard.writeText(text)
+		}
+	});
+	context.subscriptions.push(copyDepositCommand);
 }
 
 // This method is called when your extension is deactivated

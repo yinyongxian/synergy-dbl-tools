@@ -41,6 +41,18 @@
       {
         "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
         "title": "Copy Release Compilation Command And Show Result"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-examine-command",
+        "title": "Copy Examine Command"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-watch-command",
+        "title": "Copy Watch Command"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-deposit-command",
+        "title": "Copy Deposit Command"
       }
     ],
     "menus": {
@@ -72,6 +84,18 @@
         {
           "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
           "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-examine-command",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-watch-command",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-deposit-command",
+          "group": "9_cutcopypaste"
         }
       ],
       "editor/title/context": [
@@ -101,6 +125,18 @@
         },
         {
           "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-examine-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-watch-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-deposit-command",
           "group": "2_copy"
         }
       ]
