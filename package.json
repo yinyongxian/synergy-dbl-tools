@@ -3,7 +3,7 @@
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
   "version": "0.0.1",
-  "publisher": "YongXian Yin",
+  "publisher": "synergy-dbl-tools",
   "engines": {
     "vscode": "^1.85.0"
   },
