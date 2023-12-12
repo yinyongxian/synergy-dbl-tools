@@ -24,12 +24,12 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyBase);
 
-	var copyBreakCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name-without-extension", function(){
+	var copyFileNameWithoutExtension= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name-without-extension", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let name = path.parse(fileName).name;
 		vscode.env.clipboard.writeText(name)
 	});
-	context.subscriptions.push(copyBreakCommand);
+	context.subscriptions.push(copyFileNameWithoutExtension);
 
 	var copyBreakCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-break-command", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
@@ -40,7 +40,45 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyBreakCommand);
 
+	var copyDebugCompilationCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-debug-compilation-command", function(){
+		let fileName = vscode.window.activeTextEditor.document.fileName;
+		let parsedPath = path.parse(fileName);
+		let directoryPath = path.parse(parsedPath.dir);
+		let parentName = directoryPath.base;
+		let text =  `cnllib -debug -sys:${parentName} ${parsedPath.base} -log:.\\${parentName}.log`;
+		vscode.env.clipboard.writeText(text)
+	});
+	context.subscriptions.push(copyDebugCompilationCommand);
 
+	var copyReleaseCompilationCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-release-compilation-command", function(){
+		let fileName = vscode.window.activeTextEditor.document.fileName;
+		let parsedPath = path.parse(fileName);
+		let directoryPath = path.parse(parsedPath.dir);
+		let parentName = directoryPath.base;
+		let text =  `cnllib -sys:${parentName} ${parsedPath.base} -log:.\\${parentName}.log`;
+		vscode.env.clipboard.writeText(text)
+	});
+	context.subscriptions.push(copyReleaseCompilationCommand);
+
+	var copyDebugCompilationCommandAndShowResult = vscode.commands.registerCommand("synergy-dbl-tools.copy-debug-compilation-command-and-show-result", function(){
+		let fileName = vscode.window.activeTextEditor.document.fileName;
+		let parsedPath = path.parse(fileName);
+		let directoryPath = path.parse(parsedPath.dir);
+		let parentName = directoryPath.base;
+		let text =  `cnllib -debug -sys:${parentName} ${parsedPath.base} -log:.\\${parentName}.log\r\n${parentName}.log\r\n`;
+		vscode.env.clipboard.writeText(text)
+	});
+	context.subscriptions.push(copyDebugCompilationCommandAndShowResult);
+
+	var copyReleaseCompilationCommandAndShowResult = vscode.commands.registerCommand("synergy-dbl-tools.copy-release-compilation-command-and-show-result", function(){
+		let fileName = vscode.window.activeTextEditor.document.fileName;
+		let parsedPath = path.parse(fileName);
+		let directoryPath = path.parse(parsedPath.dir);
+		let parentName = directoryPath.base;
+		let text =  `cnllib -sys:${parentName} ${parsedPath.base} -log:.\\${parentName}.log\r\n${parentName}.log\r\n`;
+		vscode.env.clipboard.writeText(text)
+	});
+	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
 }
 
 // This method is called when your extension is deactivated

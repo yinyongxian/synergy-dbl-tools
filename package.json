@@ -15,10 +15,6 @@
   "contributes": {
     "commands": [
       {
-        "command": "synergy-dbl-tools.helloWorld",
-        "title": "Hello World"
-      },
-      {
         "command": "synergy-dbl-tools.copy-file-name",
         "title": "Copy File Name"
       },
@@ -29,6 +25,22 @@
       {
         "command": "synergy-dbl-tools.copy-break-command",
         "title": "Copy Break Command"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-debug-compilation-command",
+        "title": "Copy Debug Compilation Command"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-release-compilation-command",
+        "title": "Copy Release Compilation Command"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-debug-compilation-command-and-show-result",
+        "title": "Copy Debug Compilation Command And Show Result"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
+        "title": "Copy Release Compilation Command And Show Result"
       }
     ],
     "menus": {
@@ -44,6 +56,22 @@
         {
           "command": "synergy-dbl-tools.copy-break-command",
           "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-debug-compilation-command",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-release-compilation-command",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-debug-compilation-command-and-show-result",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
+          "group": "9_cutcopypaste"
         }
       ],
       "editor/title/context": [
@@ -57,6 +85,22 @@
         },
         {
           "command": "synergy-dbl-tools.copy-break-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-debug-compilation-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-release-compilation-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-debug-compilation-command-and-show-result",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
           "group": "2_copy"
         }
       ]
