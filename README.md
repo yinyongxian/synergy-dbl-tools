@@ -4,7 +4,16 @@ Synergy DBL Tools
 
 ## Features
 
-Copy some commands
+* Copy File Name
+* Copy File Name Without Extension
+* Copy Break Command
+* Copy Debug Compilation Command
+* Copy Release Compilation Command
+* Copy Debug Compilation Command And Show Result
+* Copy Release Compilation Command And Show Result
+* Copy Examine Command
+* Copy Watch Command
+* Copy Deposit Command
 
 ## Requirements
 
