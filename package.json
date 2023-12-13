@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "synergy-dbl-tools",
   "engines": {
     "vscode": "^1.85.0"
@@ -16,11 +16,11 @@
     "commands": [
       {
         "command": "synergy-dbl-tools.copy-file-name",
-        "title": "Copy File Name"
+        "title": "Copy Filename"
       },
       {
         "command": "synergy-dbl-tools.copy-file-name-without-extension",
-        "title": "Copy File Name Without Extension"
+        "title": "Copy Filename Without Extension"
       },
       {
         "command": "synergy-dbl-tools.copy-break-command",
@@ -53,6 +53,10 @@
       {
         "command": "synergy-dbl-tools.copy-deposit-command",
         "title": "Copy Deposit Command"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-line-number",
+        "title": "Copy Line Number"
       }
     ],
     "menus": {
@@ -97,6 +101,11 @@
           "command": "synergy-dbl-tools.copy-deposit-command",
           "group": "9_cutcopypaste"
         }
+        ,
+        {
+          "command": "synergy-dbl-tools.copy-line-number",
+          "group": "9_cutcopypaste"
+        }
       ],
       "editor/title/context": [
         {
@@ -137,6 +146,10 @@
         },
         {
           "command": "synergy-dbl-tools.copy-deposit-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-line-number",
           "group": "2_copy"
         }
       ]
