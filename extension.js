@@ -34,7 +34,7 @@ function activate(context) {
 	var copyBreakCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-break-command", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let name = path.parse(fileName).name;
-		let line = vscode.window.activeTextEditor.selection.start.line + 1
+		let line = vscode.window.activeTextEditor.selection.start.line + 1;
 		let breakCommand = `b ${name}:${line}`
 		vscode.env.clipboard.writeText(breakCommand)
 	});
@@ -85,7 +85,7 @@ function activate(context) {
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
 			let selectedText = doc.getText(vscode.window.activeTextEditor.selection);
-			let text =  `b ${selectedText}`;
+			let text =  `e ${selectedText}`;
 			vscode.env.clipboard.writeText(text)
 		}
 	});
@@ -112,6 +112,12 @@ function activate(context) {
 		}
 	});
 	context.subscriptions.push(copyDepositCommand);
+
+	var copyLineNumber = vscode.commands.registerCommand("synergy-dbl-tools.copy-line-number", function(){
+		let line = vscode.window.activeTextEditor.selection.start.line + 1;
+		vscode.env.clipboard.writeText(line)
+	});
+	context.subscriptions.push(copyLineNumber);
 }
 
 // This method is called when your extension is deactivated

@@ -53,6 +53,10 @@
       {
         "command": "synergy-dbl-tools.copy-deposit-command",
         "title": "Copy Deposit Command"
+      },
+      {
+        "command": "synergy-dbl-tools.copy-line-number",
+        "title": "Copy Line Number"
       }
     ],
     "menus": {
@@ -97,6 +101,11 @@
           "command": "synergy-dbl-tools.copy-deposit-command",
           "group": "9_cutcopypaste"
         }
+        ,
+        {
+          "command": "synergy-dbl-tools.copy-line-number",
+          "group": "9_cutcopypaste"
+        }
       ],
       "editor/title/context": [
         {
@@ -137,6 +146,10 @@
         },
         {
           "command": "synergy-dbl-tools.copy-deposit-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "synergy-dbl-tools.copy-line-number",
           "group": "2_copy"
         }
       ]
