@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "synergy-dbl-tools",
   "engines": {
     "vscode": "^1.85.0"
