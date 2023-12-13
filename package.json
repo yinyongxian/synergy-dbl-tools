@@ -16,11 +16,11 @@
     "commands": [
       {
         "command": "synergy-dbl-tools.copy-file-name",
-        "title": "Copy File Name"
+        "title": "Copy Filename"
       },
       {
         "command": "synergy-dbl-tools.copy-file-name-without-extension",
-        "title": "Copy File Name Without Extension"
+        "title": "Copy Filename Without Extension"
       },
       {
         "command": "synergy-dbl-tools.copy-break-command",

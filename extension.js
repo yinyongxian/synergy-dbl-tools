@@ -115,7 +115,7 @@ function activate(context) {
 
 	var copyLineNumber = vscode.commands.registerCommand("synergy-dbl-tools.copy-line-number", function(){
 		let line = vscode.window.activeTextEditor.selection.start.line + 1;
-		vscode.env.clipboard.writeText(line)
+		vscode.env.clipboard.writeText(line.toString())
 	});
 	context.subscriptions.push(copyLineNumber);
 }
