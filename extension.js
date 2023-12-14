@@ -9,7 +9,6 @@ const vscode = require('vscode');
 // Your extension is activated the very first time the command is executed
 
 // https://marketplace.visualstudio.com/manage/publishers/synergy-dbl-tools
-// Publish Token: eux4a75b6wjannu2f72wnaxnaucvuoclumh7ete5jryg5sqdmloq
 
 /**s
  * @param {vscode.ExtensionContext} context
