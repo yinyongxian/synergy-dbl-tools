@@ -34,10 +34,28 @@ function activate(context) {
 	context.subscriptions.push(copyFileNameWithoutExtension);
 
 	var copyBreakCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-break-command", function(){
-		let fileName = vscode.window.activeTextEditor.document.fileName;
-		let name = path.parse(fileName).name;
-		let line = vscode.window.activeTextEditor.selection.start.line + 1;
-		let breakCommand = `b ${name}:${line}`
+		const fileName = vscode.window.activeTextEditor.document.fileName;
+		let subroutineName = path.parse(fileName).name;
+		const lineNumber = vscode.window.activeTextEditor.selection.start.line;
+		const textLine = vscode.window.activeTextEditor.document.lineAt(lineNumber);
+		const length = textLine.text.length;
+		const startPosition = new vscode.Position(0, 0);
+		const endPosition = new vscode.Position(lineNumber, length);
+		const range = new vscode.Range(startPosition, endPosition);
+		const text = vscode.window.activeTextEditor.document.getText(range);
+		const index = text.lastIndexOf(".subroutine");
+		if (index !== -1) {
+			const textSubstring= text.substring(index + 11);
+			const textTrimStart = textSubstring.trimStart();
+			const indexEmpty = textTrimStart.indexOf(" ");
+			const indexEndOfLine = textTrimStart.indexOf("\r\n");
+			const minIndex = Math.min(indexEmpty, indexEndOfLine);
+			if (minIndex > -1) {
+				subroutineName = textTrimStart.substring(0, minIndex);
+			}
+		}
+
+		const breakCommand = `b ${subroutineName}:${lineNumber + 1}`
 		vscode.env.clipboard.writeText(breakCommand)
 	});
 	context.subscriptions.push(copyBreakCommand);
