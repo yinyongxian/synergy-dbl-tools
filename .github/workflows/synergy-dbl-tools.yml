@@ -4,12 +4,11 @@
 name: Publish Synergy DBL Tools
 
 on:
-  push:
+  release:
     tags:
       - "*"
     branches:
       - main
-  release: 
 
 jobs:
   deploy:
