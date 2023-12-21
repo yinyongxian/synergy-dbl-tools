@@ -4,7 +4,8 @@
 name: Publish Synergy DBL Tools
 
 on:
-  release: 
+  release:
+  workflow_dispatch:
 
 jobs:
   deploy:
