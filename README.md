@@ -13,6 +13,7 @@ Synergy DBL Tools
 * Copy Release Compilation Command And Show Result
 * Copy Examine Command
 * Copy Watch Command
+* Copy Examine And Watch Command
 * Copy Deposit Command
 
 ## Requirements
