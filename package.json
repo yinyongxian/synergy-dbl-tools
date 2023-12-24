@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -21,141 +21,153 @@
   "contributes": {
     "commands": [
       {
-        "command": "synergy-dbl-tools.copy-file-name",
+        "command": "copy-file-name",
         "title": "Copy Filename"
       },
       {
-        "command": "synergy-dbl-tools.copy-file-name-without-extension",
+        "command": "copy-file-name-without-extension",
         "title": "Copy Filename Without Extension"
       },
       {
-        "command": "synergy-dbl-tools.copy-break-command",
+        "command": "copy-break-command",
         "title": "Copy Break Command"
       },
       {
-        "command": "synergy-dbl-tools.copy-debug-compilation-command",
+        "command": "copy-debug-compilation-command",
         "title": "Copy Debug Compilation Command"
       },
       {
-        "command": "synergy-dbl-tools.copy-release-compilation-command",
+        "command": "copy-release-compilation-command",
         "title": "Copy Release Compilation Command"
       },
       {
-        "command": "synergy-dbl-tools.copy-debug-compilation-command-and-show-result",
+        "command": "copy-debug-compilation-command-and-show-result",
         "title": "Copy Debug Compilation Command And Show Result"
       },
       {
-        "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
+        "command": "copy-release-compilation-command-and-show-result",
         "title": "Copy Release Compilation Command And Show Result"
       },
       {
-        "command": "synergy-dbl-tools.copy-examine-command",
+        "command": "copy-examine-command",
         "title": "Copy Examine Command"
       },
       {
-        "command": "synergy-dbl-tools.copy-watch-command",
+        "command": "copy-examine-and-watch-command",
+        "title": "Copy Examine And Watch Command"
+      },
+      {
+        "command": "copy-watch-command",
         "title": "Copy Watch Command"
       },
       {
-        "command": "synergy-dbl-tools.copy-deposit-command",
+        "command": "copy-deposit-command",
         "title": "Copy Deposit Command"
       },
       {
-        "command": "synergy-dbl-tools.copy-line-number",
+        "command": "copy-line-number",
         "title": "Copy Line Number"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "synergy-dbl-tools.copy-file-name",
+          "command": "copy-file-name",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-file-name-without-extension",
+          "command": "copy-file-name-without-extension",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-break-command",
+          "command": "copy-break-command",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-debug-compilation-command",
+          "command": "copy-debug-compilation-command",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-release-compilation-command",
+          "command": "copy-release-compilation-command",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-debug-compilation-command-and-show-result",
+          "command": "copy-debug-compilation-command-and-show-result",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
+          "command": "copy-release-compilation-command-and-show-result",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-examine-command",
+          "command": "copy-examine-command",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-watch-command",
+          "command": "copy-watch-command",
           "group": "9_cutcopypaste"
         },
         {
-          "command": "synergy-dbl-tools.copy-deposit-command",
+          "command": "copy-examine-and-watch-command",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "copy-deposit-command",
           "group": "9_cutcopypaste"
         }
         ,
         {
-          "command": "synergy-dbl-tools.copy-line-number",
+          "command": "copy-line-number",
           "group": "9_cutcopypaste"
         }
       ],
       "editor/title/context": [
         {
-          "command": "synergy-dbl-tools.copy-file-name",
+          "command": "copy-file-name",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-file-name-without-extension",
+          "command": "copy-file-name-without-extension",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-break-command",
+          "command": "copy-break-command",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-debug-compilation-command",
+          "command": "copy-debug-compilation-command",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-release-compilation-command",
+          "command": "copy-release-compilation-command",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-debug-compilation-command-and-show-result",
+          "command": "copy-debug-compilation-command-and-show-result",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-release-compilation-command-and-show-result",
+          "command": "copy-release-compilation-command-and-show-result",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-examine-command",
+          "command": "copy-examine-command",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-watch-command",
+          "command": "copy-watch-command",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-deposit-command",
+          "command": "copy-examine-and-watch-command",
           "group": "2_copy"
         },
         {
-          "command": "synergy-dbl-tools.copy-line-number",
+          "command": "copy-deposit-command",
+          "group": "2_copy"
+        },
+        {
+          "command": "copy-line-number",
           "group": "2_copy"
         }
       ]

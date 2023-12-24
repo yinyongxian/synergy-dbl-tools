@@ -19,21 +19,21 @@ function activate(context) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "synergy-dbl-tools" is now active!');
 
-	var copyBase= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name", function(){
+	var copyBase= vscode.commands.registerCommand("copy-file-name", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let basename = path.parse(fileName).base;
 		vscode.env.clipboard.writeText(basename)
 	});
 	context.subscriptions.push(copyBase);
 
-	var copyFileNameWithoutExtension= vscode.commands.registerCommand("synergy-dbl-tools.copy-file-name-without-extension", function(){
+	var copyFileNameWithoutExtension= vscode.commands.registerCommand("copy-file-name-without-extension", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let name = path.parse(fileName).name;
 		vscode.env.clipboard.writeText(name)
 	});
 	context.subscriptions.push(copyFileNameWithoutExtension);
 
-	var copyBreakCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-break-command", function(){
+	var copyBreakCommand= vscode.commands.registerCommand("copy-break-command", function(){
 		const fileName = vscode.window.activeTextEditor.document.fileName;
 		let subroutineName = path.parse(fileName).name;
 		const lineNumber = vscode.window.activeTextEditor.selection.start.line;
@@ -60,7 +60,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyBreakCommand);
 
-	var copyDebugCompilationCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-debug-compilation-command", function(){
+	var copyDebugCompilationCommand= vscode.commands.registerCommand("copy-debug-compilation-command", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
@@ -70,7 +70,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyDebugCompilationCommand);
 
-	var copyReleaseCompilationCommand= vscode.commands.registerCommand("synergy-dbl-tools.copy-release-compilation-command", function(){
+	var copyReleaseCompilationCommand= vscode.commands.registerCommand("copy-release-compilation-command", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
@@ -80,7 +80,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyReleaseCompilationCommand);
 
-	var copyDebugCompilationCommandAndShowResult = vscode.commands.registerCommand("synergy-dbl-tools.copy-debug-compilation-command-and-show-result", function(){
+	var copyDebugCompilationCommandAndShowResult = vscode.commands.registerCommand("copy-debug-compilation-command-and-show-result", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
@@ -90,7 +90,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyDebugCompilationCommandAndShowResult);
 
-	var copyReleaseCompilationCommandAndShowResult = vscode.commands.registerCommand("synergy-dbl-tools.copy-release-compilation-command-and-show-result", function(){
+	var copyReleaseCompilationCommandAndShowResult = vscode.commands.registerCommand("copy-release-compilation-command-and-show-result", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
@@ -100,7 +100,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
 
-	var copyExamineCommand = vscode.commands.registerCommand("synergy-dbl-tools.copy-examine-command", function(){
+	var copyExamineCommand = vscode.commands.registerCommand("copy-examine-command", function(){
 		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
@@ -111,7 +111,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyExamineCommand);
 
-	var copyWatchCommand = vscode.commands.registerCommand("synergy-dbl-tools.copy-watch-command", function(){
+	var copyWatchCommand = vscode.commands.registerCommand("copy-watch-command", function(){
 		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
@@ -122,7 +122,23 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyWatchCommand);
 
-	var copyDepositCommand = vscode.commands.registerCommand("synergy-dbl-tools.copy-deposit-command", function(){
+	var copyExamineAndWatchCommand = vscode.commands.registerCommand("copy-examine-and-watch-command", function(){
+		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
+		if (!selectionIsEmpty) {
+			let doc = vscode.window.activeTextEditor.document;
+			let selectedText = doc.getText(vscode.window.activeTextEditor.selection);
+			let examineText =  `E ${selectedText}`;
+			vscode.env.clipboard.writeText(examineText)
+
+			setTimeout(function () {
+				let watchText =  `w ${selectedText}`;
+				vscode.env.clipboard.writeText(watchText)
+			}, 1000)
+		}
+	});
+	context.subscriptions.push(copyExamineAndWatchCommand);
+
+	var copyDepositCommand = vscode.commands.registerCommand("copy-deposit-command", function(){
 		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
@@ -133,7 +149,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyDepositCommand);
 
-	var copyLineNumber = vscode.commands.registerCommand("synergy-dbl-tools.copy-line-number", function(){
+	var copyLineNumber = vscode.commands.registerCommand("copy-line-number", function(){
 		let line = vscode.window.activeTextEditor.selection.start.line + 1;
 		vscode.env.clipboard.writeText(line.toString())
 	});
