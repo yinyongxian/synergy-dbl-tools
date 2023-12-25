@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -67,6 +67,10 @@
       {
         "command": "copy-line-number",
         "title": "Copy Line Number"
+      },
+      {
+        "command": "copy-go-line-number",
+        "title": "Copy Go Line Number"
       }
     ],
     "menus": {
@@ -114,10 +118,13 @@
         {
           "command": "copy-deposit-command",
           "group": "9_cutcopypaste"
-        }
-        ,
+        },
         {
           "command": "copy-line-number",
+          "group": "9_cutcopypaste"
+        },
+        {
+          "command": "copy-go-line-number",
           "group": "9_cutcopypaste"
         }
       ],
@@ -168,6 +175,10 @@
         },
         {
           "command": "copy-line-number",
+          "group": "2_copy"
+        },
+        {
+          "command": "copy-go-line-number",
           "group": "2_copy"
         }
       ]

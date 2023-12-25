@@ -15,6 +15,7 @@ Synergy DBL Tools
 * Copy Watch Command
 * Copy Examine And Watch Command
 * Copy Deposit Command
+* Copy Go Line Number
 
 ## Requirements
 

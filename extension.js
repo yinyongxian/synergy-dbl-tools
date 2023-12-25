@@ -155,6 +155,13 @@ function activate(context) {
 		vscode.env.clipboard.writeText(line.toString())
 	});
 	context.subscriptions.push(copyLineNumber);
+
+	var copyGoLineNumber = vscode.commands.registerCommand("copy-go-line-number", function(){
+		let line = vscode.window.activeTextEditor.selection.start.line + 1;
+		const goLineNumber = `g ${line.toString()}`;
+		vscode.env.clipboard.writeText(goLineNumber)
+	});
+	context.subscriptions.push(copyGoLineNumber);
 }
 
 // This method is called when your extension is deactivated
