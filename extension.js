@@ -127,7 +127,7 @@ function activate(context) {
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
 			let selectedText = doc.getText(vscode.window.activeTextEditor.selection);
-			let examineText =  `E ${selectedText}`;
+			let examineText =  `e ${selectedText}`;
 			vscode.env.clipboard.writeText(examineText)
 
 			setTimeout(function () {
