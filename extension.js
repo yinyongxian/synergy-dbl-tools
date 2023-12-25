@@ -48,8 +48,9 @@ function activate(context) {
 			const textSubstring= text.substring(index + 11);
 			const textTrimStart = textSubstring.trimStart();
 			const indexEmpty = textTrimStart.indexOf(" ");
+			const indexComma = textTrimStart.indexOf(",");
 			const indexEndOfLine = textTrimStart.indexOf("\r\n");
-			const minIndex = Math.min(indexEmpty, indexEndOfLine);
+			const minIndex = Math.min(indexEmpty, indexComma, indexEndOfLine);
 			if (minIndex > -1) {
 				subroutineName = textTrimStart.substring(0, minIndex);
 			}
