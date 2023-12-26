@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -71,61 +71,77 @@
       {
         "command": "copy-go-line-number",
         "title": "Copy Go Line Number"
+      },
+      {
+        "command": "copy-go-return",
+        "title": "Copy Go Return"
+      },
+      {
+        "command": "copy-go-exit",
+        "title": "Copy Go Exit"
+      },
+      {
+        "command": "copy-cancel-all",
+        "title": "Copy Cancel All"
       }
     ],
     "menus": {
       "editor/context": [
         {
-          "command": "copy-file-name",
-          "group": "9_cutcopypaste"
-        },
-        {
-          "command": "copy-file-name-without-extension",
-          "group": "9_cutcopypaste"
-        },
-        {
           "command": "copy-break-command",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@11"
         },
         {
           "command": "copy-debug-compilation-command",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@12"
         },
         {
           "command": "copy-release-compilation-command",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@13"
         },
         {
           "command": "copy-debug-compilation-command-and-show-result",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@14"
         },
         {
           "command": "copy-release-compilation-command-and-show-result",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@15"
         },
         {
           "command": "copy-examine-command",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@16"
         },
         {
           "command": "copy-watch-command",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@17"
         },
         {
           "command": "copy-examine-and-watch-command",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@18"
         },
         {
           "command": "copy-deposit-command",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@19"
         },
         {
           "command": "copy-line-number",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@20"
         },
         {
           "command": "copy-go-line-number",
-          "group": "9_cutcopypaste"
+          "group": "9_cutcopypaste@21"
+        },
+        {
+          "command": "copy-go-return",
+          "group": "9_cutcopypaste@22"
+        },
+        {
+          "command": "copy-go-exit",
+          "group": "9_cutcopypaste@23"
+        },
+        {
+          "command": "copy-cancel-all",
+          "group": "9_cutcopypaste@24"
         }
       ],
       "editor/title/context": [
@@ -135,50 +151,6 @@
         },
         {
           "command": "copy-file-name-without-extension",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-break-command",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-debug-compilation-command",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-release-compilation-command",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-debug-compilation-command-and-show-result",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-release-compilation-command-and-show-result",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-examine-command",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-watch-command",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-examine-and-watch-command",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-deposit-command",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-line-number",
-          "group": "2_copy"
-        },
-        {
-          "command": "copy-go-line-number",
           "group": "2_copy"
         }
       ]

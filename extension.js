@@ -8,6 +8,7 @@ const vscode = require('vscode');
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 
+// https://code.visualstudio.com/api
 // https://marketplace.visualstudio.com/manage/publishers/synergy-dbl-tools
 
 /**s
@@ -162,6 +163,21 @@ function activate(context) {
 		vscode.env.clipboard.writeText(goLineNumber)
 	});
 	context.subscriptions.push(copyGoLineNumber);
+
+	var copyGoReturn = vscode.commands.registerCommand("copy-go-return", function(){
+		vscode.env.clipboard.writeText("g /return")
+	});
+	context.subscriptions.push(copyGoReturn);
+
+	var copyGoExit = vscode.commands.registerCommand("copy-go-exit", function(){
+		vscode.env.clipboard.writeText("g /exit")
+	});
+	context.subscriptions.push(copyGoExit);
+
+	var copyCancelAll = vscode.commands.registerCommand("copy-cancel-all", function(){
+		vscode.env.clipboard.writeText("ca/a")
+	});
+	context.subscriptions.push(copyCancelAll);
 }
 
 // This method is called when your extension is deactivated
