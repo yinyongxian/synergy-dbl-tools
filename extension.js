@@ -178,6 +178,11 @@ function activate(context) {
 		vscode.env.clipboard.writeText("ca/a")
 	});
 	context.subscriptions.push(copyCancelAll);
+
+	var copyTrace = vscode.commands.registerCommand("copy-trace", function(){
+		vscode.env.clipboard.writeText("trace")
+	});
+	context.subscriptions.push(copyTrace);
 }
 
 // This method is called when your extension is deactivated
