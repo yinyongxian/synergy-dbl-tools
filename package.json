@@ -153,11 +153,11 @@
         },
         {
           "command": "copy-trace",
-          "group": "9_cutcopypaste@24"
+          "group": "9_cutcopypaste@25"
         },
         {
           "command": "copy-return-exit-cancel-trace",
-          "group": "9_cutcopypaste@24"
+          "group": "9_cutcopypaste@26"
         }
       ],
       "editor/title/context": [
