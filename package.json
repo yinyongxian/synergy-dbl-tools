@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -87,6 +87,10 @@
       {
         "command": "copy-trace",
         "title": "Copy Trace"
+      },
+      {
+        "command": "copy-return-exit-cancel-trace",
+        "title": "Copy Return/Exit/Cancel/Trace"
       }
     ],
     "menus": {
@@ -149,6 +153,10 @@
         },
         {
           "command": "copy-trace",
+          "group": "9_cutcopypaste@24"
+        },
+        {
+          "command": "copy-return-exit-cancel-trace",
           "group": "9_cutcopypaste@24"
         }
       ],

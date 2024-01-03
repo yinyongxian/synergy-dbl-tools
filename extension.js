@@ -183,6 +183,11 @@ function activate(context) {
 		vscode.env.clipboard.writeText("trace")
 	});
 	context.subscriptions.push(copyTrace);
+
+	var copyReturn_Exit_Cancel_Trace = vscode.commands.registerCommand("copy-return-exit-cancel-trace", function(){
+		vscode.env.clipboard.writeText("trace")
+	});
+	context.subscriptions.push(copyReturn_Exit_Cancel_Trace);
 }
 
 // This method is called when your extension is deactivated

@@ -20,6 +20,7 @@ Synergy DBL Tools
 * Copy Go Exit
 * Copy Cancel All
 * Copy Trace
+* Copy Return/Exit/Cancel/Trace
 
 ## Requirements
 
