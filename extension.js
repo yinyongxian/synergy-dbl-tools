@@ -185,7 +185,19 @@ function activate(context) {
 	context.subscriptions.push(copyTrace);
 
 	var copyReturn_Exit_Cancel_Trace = vscode.commands.registerCommand("copy-return-exit-cancel-trace", function(){
-		vscode.env.clipboard.writeText("trace")
+		vscode.env.clipboard.writeText("g /return")
+
+		setTimeout(function () {
+			vscode.env.clipboard.writeText("g /exit")
+		}, 1000)
+
+		setTimeout(function () {
+			vscode.env.clipboard.writeText("ca/a")
+		}, 2000)
+
+		setTimeout(function () {
+			vscode.env.clipboard.writeText("trace")
+		}, 3000)
 	});
 	context.subscriptions.push(copyReturn_Exit_Cancel_Trace);
 }
