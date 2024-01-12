@@ -8,6 +8,7 @@ const vscode = require('vscode');
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 
+// https://github.com/yinyongxian/synergy-dbl-tools
 // https://code.visualstudio.com/api
 // https://marketplace.visualstudio.com/manage/publishers/synergy-dbl-tools
 
