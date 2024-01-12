@@ -12,7 +12,7 @@ const vscode = require('vscode');
 // https://code.visualstudio.com/api
 // https://marketplace.visualstudio.com/manage/publishers/synergy-dbl-tools
 
-/**s
+/**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
