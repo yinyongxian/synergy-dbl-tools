@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -91,6 +91,10 @@
       {
         "command": "copy-return-exit-cancel-trace",
         "title": "Copy Return/Exit/Cancel/Trace"
+      },
+      {
+        "command": "copy-break-in-nonsubroutine",
+        "title": "Copy Break Command In Nonsubroutine"
       }
     ],
     "menus": {
@@ -158,6 +162,10 @@
         {
           "command": "copy-return-exit-cancel-trace",
           "group": "9_cutcopypaste@26"
+        },
+        {
+          "command": "copy-break-in-nonsubroutine",
+          "group": "9_cutcopypaste@27"
         }
       ],
       "editor/title/context": [

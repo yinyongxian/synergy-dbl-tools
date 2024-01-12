@@ -200,6 +200,13 @@ function activate(context) {
 		}, 3000)
 	});
 	context.subscriptions.push(copyReturn_Exit_Cancel_Trace);
+
+	var copyBreakCommandInNonsubroutine= vscode.commands.registerCommand("copy-break-in-nonsubroutine", function(){
+		const lineNumber = vscode.window.activeTextEditor.selection.start.line;
+		const breakCommand = `b ${lineNumber + 1}`
+		vscode.env.clipboard.writeText(breakCommand)
+	});
+	context.subscriptions.push(copyBreakCommandInNonsubroutine);
 }
 
 // This method is called when your extension is deactivated

@@ -21,6 +21,7 @@ Synergy DBL Tools
 * Copy Cancel All
 * Copy Trace
 * Copy Return/Exit/Cancel/Trace
+* Copy Break Command In Nonsubroutine
 
 ## Requirements
 
