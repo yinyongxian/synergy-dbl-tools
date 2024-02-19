@@ -52,7 +52,8 @@ function activate(context) {
 			const indexEmpty = textTrimStart.indexOf(" ");
 			const indexComma = textTrimStart.indexOf(",");
 			const indexEndOfLine = textTrimStart.indexOf("\r\n");
-			const minIndex = Math.min(indexEmpty, indexComma, indexEndOfLine);
+			const indexTab = textTrimStart.indexOf("\t");
+			const minIndex = Math.min(indexEmpty, indexComma, indexEndOfLine, indexTab);
 			if (minIndex > -1) {
 				subroutineName = textTrimStart.substring(0, minIndex);
 			}
