@@ -101,6 +101,7 @@
       "editor/context": [
         {
           "command": "copy-break-command",
+          "when": "resourceExtname =~ /\\.(dbl|.wsc)$/",
           "group": "9_cutcopypaste@11"
         },
         {
