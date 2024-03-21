@@ -6,7 +6,9 @@ Synergy DBL Tools
 
 * Copy File Name
 * Copy File Name Without Extension
-  
+
+<br>
+
 * Copy Break Command
 * Copy Examine Command
 * Copy Watch Command
