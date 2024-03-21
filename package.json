@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -31,22 +31,6 @@
       {
         "command": "copy-break-command",
         "title": "Copy Break Command"
-      },
-      {
-        "command": "copy-debug-compilation-command",
-        "title": "Copy Debug Compilation Command"
-      },
-      {
-        "command": "copy-release-compilation-command",
-        "title": "Copy Release Compilation Command"
-      },
-      {
-        "command": "copy-debug-compilation-command-and-show-result",
-        "title": "Copy Debug Compilation Command And Show Result"
-      },
-      {
-        "command": "copy-release-compilation-command-and-show-result",
-        "title": "Copy Release Compilation Command And Show Result"
       },
       {
         "command": "copy-examine-command",
@@ -95,6 +79,22 @@
       {
         "command": "copy-break-in-nonsubroutine",
         "title": "Copy Break Command In Nonsubroutine"
+      },
+      {
+        "command": "copy-debug-compilation-command",
+        "title": "Copy Debug Compilation Command"
+      },
+      {
+        "command": "copy-release-compilation-command",
+        "title": "Copy Release Compilation Command"
+      },
+      {
+        "command": "copy-debug-compilation-command-and-show-result",
+        "title": "Copy Debug Compilation Command And Show Result"
+      },
+      {
+        "command": "copy-release-compilation-command-and-show-result",
+        "title": "Copy Release Compilation Command And Show Result"
       }
     ],
     "menus": {
@@ -105,82 +105,82 @@
           "group": "9_cutcopypaste@11"
         },
         {
-          "command": "copy-debug-compilation-command",
+          "command": "copy-examine-command",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@12"
         },
         {
-          "command": "copy-release-compilation-command",
+          "command": "copy-watch-command",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@13"
         },
         {
-          "command": "copy-debug-compilation-command-and-show-result",
+          "command": "copy-examine-and-watch-command",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@14"
         },
         {
-          "command": "copy-release-compilation-command-and-show-result",
+          "command": "copy-deposit-command",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@15"
         },
         {
-          "command": "copy-examine-command",
+          "command": "copy-line-number",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@16"
         },
         {
-          "command": "copy-watch-command",
+          "command": "copy-go-line-number",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@17"
         },
         {
-          "command": "copy-examine-and-watch-command",
+          "command": "copy-go-return",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@18"
         },
         {
-          "command": "copy-deposit-command",
+          "command": "copy-go-exit",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@19"
         },
         {
-          "command": "copy-line-number",
+          "command": "copy-cancel-all",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@20"
         },
         {
-          "command": "copy-go-line-number",
+          "command": "copy-trace",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@21"
         },
         {
-          "command": "copy-go-return",
+          "command": "copy-return-exit-cancel-trace",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@22"
         },
         {
-          "command": "copy-go-exit",
+          "command": "copy-break-in-nonsubroutine",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@23"
         },
         {
-          "command": "copy-cancel-all",
+          "command": "copy-debug-compilation-command",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@24"
         },
         {
-          "command": "copy-trace",
+          "command": "copy-release-compilation-command",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@25"
         },
         {
-          "command": "copy-return-exit-cancel-trace",
+          "command": "copy-debug-compilation-command-and-show-result",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@26"
         },
         {
-          "command": "copy-break-in-nonsubroutine",
+          "command": "copy-release-compilation-command-and-show-result",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@27"
         }
