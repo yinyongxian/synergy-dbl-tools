@@ -59,7 +59,8 @@ function activate(context) {
 			}
 		}
 
-		const breakCommand = `b ${subroutineName}:${lineNumber + 1}`
+		const lineNumbers = vscode.window.activeTextEditor.selections.map(ele => ele.start.line + 1).join(", ");
+		const breakCommand = `b ${subroutineName}:${lineNumbers}`
 		vscode.env.clipboard.writeText(breakCommand)
 	});
 	context.subscriptions.push(copyBreakCommand);
