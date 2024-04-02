@@ -37,7 +37,7 @@ function activate(context) {
 
 	var copyBreakCommand= vscode.commands.registerCommand("copy-break-command", function(){
 		const fileName = vscode.window.activeTextEditor.document.fileName;
-		let subroutineName = path.parse(fileName).name;
+		let subroutineName = "";
 		const lineNumber = vscode.window.activeTextEditor.selection.start.line;
 		const textLine = vscode.window.activeTextEditor.document.lineAt(lineNumber);
 		const length = textLine.text.length;
@@ -59,8 +59,9 @@ function activate(context) {
 			}
 		}
 
+		const method = subroutineName.trim().length > 0 ? subroutineName + ":" : "";
 		const lineNumbers = vscode.window.activeTextEditor.selections.map(ele => ele.start.line + 1).join(", ");
-		const breakCommand = `b ${subroutineName}:${lineNumbers}`
+		const breakCommand = `b ${method}${lineNumbers}`
 		vscode.env.clipboard.writeText(breakCommand)
 	});
 	context.subscriptions.push(copyBreakCommand);
