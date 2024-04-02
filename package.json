@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
