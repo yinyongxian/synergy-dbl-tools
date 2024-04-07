@@ -45,9 +45,18 @@ function activate(context) {
 		const endPosition = new vscode.Position(lineNumber, length);
 		const range = new vscode.Range(startPosition, endPosition);
 		const text = vscode.window.activeTextEditor.document.getText(range);
-		const index = text.lastIndexOf(".subroutine");
+		var functionLength = 0;
+		var index = text.lastIndexOf(".subroutine");
+		if (index == -1){
+			index = text.lastIndexOf(".function");
+			functionLength = 9
+		}
+		else {
+			functionLength = 11
+		}
+
 		if (index !== -1) {
-			const textSubstring= text.substring(index + 11);
+			const textSubstring= text.substring(index + functionLength);
 			const textTrimStart = textSubstring.trimStart();
 			const indexEmpty = textTrimStart.indexOf(" ");
 			const indexComma = textTrimStart.indexOf(",");
