@@ -35,7 +35,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyFileNameWithoutExtension);
 
-	var copyBreakCommand= vscode.commands.registerCommand("copy-break-command", function(){
+	var copyBreakCommand= vscode.commands.registerCommand("copy-break", function(){
 		const fileName = vscode.window.activeTextEditor.document.fileName;
 		let subroutineName = "";
 		const lineNumber = vscode.window.activeTextEditor.selection.start.line;
@@ -75,7 +75,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyBreakCommand);
 
-	var copyExamineCommand = vscode.commands.registerCommand("copy-examine-command", function(){
+	var copyExamineCommand = vscode.commands.registerCommand("copy-examine", function(){
 		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
@@ -86,7 +86,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyExamineCommand);
 
-	var copyWatchCommand = vscode.commands.registerCommand("copy-watch-command", function(){
+	var copyWatchCommand = vscode.commands.registerCommand("copy-watch", function(){
 		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
@@ -97,7 +97,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyWatchCommand);
 
-	var copyExamineAndWatchCommand = vscode.commands.registerCommand("copy-examine-and-watch-command", function(){
+	var copyExamineAndWatchCommand = vscode.commands.registerCommand("copy-examine-and-watch", function(){
 		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
@@ -113,7 +113,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyExamineAndWatchCommand);
 
-	var copyDepositCommand = vscode.commands.registerCommand("copy-deposit-command", function(){
+	var copyDepositCommand = vscode.commands.registerCommand("copy-deposit", function(){
 		let selectionIsEmpty = vscode.window.activeTextEditor.selection.isEmpty;
 		if (!selectionIsEmpty) {
 			let doc = vscode.window.activeTextEditor.document;
@@ -123,6 +123,16 @@ function activate(context) {
 		}
 	});
 	context.subscriptions.push(copyDepositCommand);
+
+	var copyStepInto = vscode.commands.registerCommand("copy-step-into", function(){
+		vscode.env.clipboard.writeText("step into")
+	});
+	context.subscriptions.push(copyStepInto);
+
+	var copyStepOver = vscode.commands.registerCommand("copy-step-over", function(){
+		vscode.env.clipboard.writeText("step over")
+	});
+	context.subscriptions.push(copyStepOver);
 
 	var copyLineNumber = vscode.commands.registerCommand("copy-line-number", function(){
 		let line = vscode.window.activeTextEditor.selection.start.line + 1;
@@ -181,7 +191,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyBreakCommandInNonsubroutine);
 
-	var copyDebugCompilationCommand= vscode.commands.registerCommand("copy-debug-compilation-command", function(){
+	var copyDebugCompilationCommand= vscode.commands.registerCommand("copy-debug-compilation", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
@@ -191,7 +201,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyDebugCompilationCommand);
 
-	var copyReleaseCompilationCommand= vscode.commands.registerCommand("copy-release-compilation-command", function(){
+	var copyReleaseCompilationCommand= vscode.commands.registerCommand("copy-release-compilation", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
@@ -201,7 +211,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyReleaseCompilationCommand);
 
-	var copyDebugCompilationCommandAndShowResult = vscode.commands.registerCommand("copy-debug-compilation-command-and-show-result", function(){
+	var copyDebugCompilationCommandAndShowResult = vscode.commands.registerCommand("copy-debug-compilation-and-show-result", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
@@ -211,7 +221,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyDebugCompilationCommandAndShowResult);
 
-	var copyReleaseCompilationCommandAndShowResult = vscode.commands.registerCommand("copy-release-compilation-command-and-show-result", function(){
+	var copyReleaseCompilationCommandAndShowResult = vscode.commands.registerCommand("copy-release-compilation-and-show-result", function(){
 		let fileName = vscode.window.activeTextEditor.document.fileName;
 		let parsedPath = path.parse(fileName);
 		let directoryPath = path.parse(parsedPath.dir);
