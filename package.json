@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -49,12 +49,8 @@
         "title": "Copy Deposit"
       },
       {
-        "command": "copy-step-into",
-        "title": "Copy Step Into"
-      },
-      {
-        "command": "copy-step-over",
-        "title": "Copy Step Over"
+        "command": "copy-set-debugger-parameters",
+        "title": "Copy Set Debugger Parameters"
       },
       {
         "command": "copy-line-number",
@@ -133,72 +129,72 @@
           "group": "9_cutcopypaste@15"
         },
         {
-          "command": "copy-step-into",
+          "command": "copy-set-debugger-parameters",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@16"
         },
         {
-          "command": "copy-step-over",
+          "command": "copy-line-number",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@17"
         },
         {
-          "command": "copy-line-number",
+          "command": "copy-go-line-number",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@18"
         },
         {
-          "command": "copy-go-line-number",
+          "command": "copy-go-return",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@19"
         },
         {
-          "command": "copy-go-return",
+          "command": "copy-go-exit",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@20"
         },
         {
-          "command": "copy-go-exit",
+          "command": "copy-cancel-all",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@21"
         },
         {
-          "command": "copy-cancel-all",
+          "command": "copy-trace",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@22"
         },
         {
-          "command": "copy-trace",
+          "command": "copy-return-exit-cancel-trace",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@23"
         },
         {
-          "command": "copy-return-exit-cancel-trace",
+          "command": "copy-break-in-nonsubroutine",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@24"
         },
         {
-          "command": "copy-break-in-nonsubroutine",
+          "command": "copy-debug-compilation",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@25"
         },
         {
-          "command": "copy-debug-compilation",
+          "command": "copy-release-compilation",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@26"
         },
         {
-          "command": "copy-release-compilation",
+          "command": "copy-debug-compilation-and-show-result",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@27"
         },
         {
-          "command": "copy-debug-compilation-and-show-result",
+          "command": "copy-release-compilation-and-show-result",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@28"
         },
         {
-          "command": "copy-release-compilation-and-show-result",
+          "command": "copy-set-trap-on-or-off",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@29"
         }

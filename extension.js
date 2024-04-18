@@ -124,15 +124,41 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyDepositCommand);
 
-	var copyStepInto = vscode.commands.registerCommand("copy-step-into", function(){
-		vscode.env.clipboard.writeText("step into")
+	// SET BREAK brkpt         - See HELP BREAK
+	// SET DBGSRC pth          - Set the search logical for source files               
+	// SET STEP OVER           - Set the default STEP mode to OVER                     
+	// SET STEP INTO           - Set the default STEP mode to INTO                     
+	// SET STOP ON             - Break whenever a program encounters a STOP            
+	// SET STOP OFF            - Do not break when an STOP is encountered              
+	// SET TRAP IGNORE nn      - When Set trap is on, ignore the errors                
+	// SET TRAP ON             - Break whenever a program traps an error               
+	// SET TRAP OFF            - Do not break when an error is trapped                 
+	// SET TYPEAHEAD ON        - Turn typeahead on                                     
+	// SET TYPEAHEAD OFF       - Turn typeahead off                                    
+	// SET UNINITIALIZED ON    - Set watching for uninitialized memory access on       
+	// SET UNINITIALIZED OFF   - Set watching for uninitialized memory access off      
+	// SET UNINITIALIZED BREAK - Set break on uninitialized memory access              
+	// SET VIEW count          - Set number of lines displayed for the VIEW command                                                                                    SET WATCH var           - See HELP WATCH	
+	var copySetDebuggerParameters = vscode.commands.registerCommand("copy-set-debugger-parameters", function(){
+		let delaySeconds = 0;
+		vscode.env.clipboard.writeText("SET STEP OVER")
+		setTimeout(function(){
+			vscode.env.clipboard.writeText("SET STEP INTO")
+		}, ++delaySeconds * 1000)
+		setTimeout(function(){
+			vscode.env.clipboard.writeText("SET TRAP ON")
+		}, ++delaySeconds * 1000)
+		setTimeout(function(){
+			vscode.env.clipboard.writeText("SET TRAP OFF ")
+		}, ++delaySeconds * 1000)
+		setTimeout(function(){
+			vscode.env.clipboard.writeText("SET STOP ON")
+		}, ++delaySeconds * 1000)
+		setTimeout(function(){
+			vscode.env.clipboard.writeText("SET TRAP OFF")
+		}, ++delaySeconds * 1000)
 	});
-	context.subscriptions.push(copyStepInto);
-
-	var copyStepOver = vscode.commands.registerCommand("copy-step-over", function(){
-		vscode.env.clipboard.writeText("step over")
-	});
-	context.subscriptions.push(copyStepOver);
+	context.subscriptions.push(copySetDebuggerParameters);
 
 	var copyLineNumber = vscode.commands.registerCommand("copy-line-number", function(){
 		let line = vscode.window.activeTextEditor.selection.start.line + 1;
@@ -168,19 +194,19 @@ function activate(context) {
 	context.subscriptions.push(copyTrace);
 
 	var copyReturn_Exit_Cancel_Trace = vscode.commands.registerCommand("copy-return-exit-cancel-trace", function(){
+		let delaySeconds = 0;
 		vscode.env.clipboard.writeText("g /return")
-
 		setTimeout(function () {
 			vscode.env.clipboard.writeText("g /exit")
-		}, 1000)
+		}, ++delaySeconds * 1000)
 
 		setTimeout(function () {
 			vscode.env.clipboard.writeText("ca/a")
-		}, 2000)
+		}, ++delaySeconds * 1000)
 
 		setTimeout(function () {
 			vscode.env.clipboard.writeText("trace")
-		}, 3000)
+		}, ++delaySeconds * 1000)
 	});
 	context.subscriptions.push(copyReturn_Exit_Cancel_Trace);
 

@@ -13,8 +13,7 @@ Synergy DBL Tools
 * Copy Watch
 * Copy Examine And Watch
 * Copy Deposit
-* Copy Step Into
-* Copy Step Over
+* Copy Set Debugger Parameters
 * Copy Go Line Number
 * Copy Go Return
 * Copy Go Exit
