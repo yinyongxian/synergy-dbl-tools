@@ -60,9 +60,10 @@ function activate(context) {
 			const textTrimStart = textSubstring.trimStart();
 			const indexEmpty = textTrimStart.indexOf(" ");
 			const indexComma = textTrimStart.indexOf(",");
+			const indexSemicolon = textTrimStart.indexOf(";");
 			const indexEndOfLine = textTrimStart.indexOf("\r\n");
 			const indexTab = textTrimStart.indexOf("\t");
-			const minIndex = Math.min(indexEmpty, indexComma, indexEndOfLine, indexTab);
+			const minIndex = Math.min(indexEmpty, indexComma, indexSemicolon, indexEndOfLine, indexTab);
 			if (minIndex > -1) {
 				subroutineName = textTrimStart.substring(0, minIndex);
 			}
