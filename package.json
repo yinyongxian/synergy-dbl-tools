@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "Media/icon-tool.ico",
@@ -192,11 +192,6 @@
           "command": "copy-release-compilation-and-show-result",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@28"
-        },
-        {
-          "command": "copy-set-trap-on-or-off",
-          "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
-          "group": "9_cutcopypaste@29"
         }
       ],
       "editor/title/context": [
