@@ -156,7 +156,7 @@ function activate(context) {
 			vscode.env.clipboard.writeText("SET STOP ON")
 		}, ++delaySeconds * 1000)
 		setTimeout(function(){
-			vscode.env.clipboard.writeText("SET TRAP OFF")
+			vscode.env.clipboard.writeText("SET STOP OFF")
 		}, ++delaySeconds * 1000)
 	});
 	context.subscriptions.push(copySetDebuggerParameters);
