@@ -46,9 +46,9 @@ function activate(context) {
 		const range = new vscode.Range(startPosition, endPosition);
 		const text = vscode.window.activeTextEditor.document.getText(range);
 		var functionLength = 0;
-		var index = text.lastIndexOf(".subroutine");
+		var index = text.toLowerCase().lastIndexOf(".subroutine");
 		if (index == -1){
-			index = text.lastIndexOf(".function");
+			index = text.toLowerCase().lastIndexOf(".function");
 			functionLength = 9
 		}
 		else {
