@@ -1,4 +1,4 @@
-# synergy-dbl-tools README
+# synergy-dbl-tools
 
 Synergy DBL Tools
 
