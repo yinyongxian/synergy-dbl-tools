@@ -262,6 +262,10 @@ function activate(context) {
     context.subscriptions.push(definitionProvider);
 }
 
+
+// How to implement go to definition of subroutine in synergy/ex language in visual studio code extension? 
+// incluede the detail Java Script code of Implement the logic to find the subroutine definition in current 
+// workspace. Use Java Script language.
 class SynergyDefinitionProvider {
     /**
      * @param {vscode.TextDocument} document
