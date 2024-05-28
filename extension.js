@@ -257,6 +257,60 @@ function activate(context) {
 		vscode.env.clipboard.writeText(text)
 	});
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
+
+    let definitionProvider = vscode.languages.registerDefinitionProvider('synergy', new SynergyDefinitionProvider());
+    context.subscriptions.push(definitionProvider);
+}
+
+class SynergyDefinitionProvider {
+    /**
+     * @param {vscode.TextDocument} document
+     * @param {vscode.Position} position
+     * @param {vscode.CancellationToken} token
+     * @returns {vscode.ProviderResult<vscode.Definition>}
+     */
+    provideDefinition(document, position, token) {
+        const wordRange = document.getWordRangeAtPosition(position);
+        if (!wordRange) {
+            return null;
+        }
+
+        const word = document.getText(wordRange);
+        const definition = findDefinition(document, word);
+
+        if (definition) {
+            const uri = document.uri;
+            const range = new vscode.Range(
+                new vscode.Position(definition.line, definition.character),
+                new vscode.Position(definition.line, definition.character + word.length)
+            );
+            return new vscode.Location(uri, range);
+        }
+
+        return null;
+    }
+}
+
+/**
+ * Finds the definition of a subroutine in the given document.
+ * @param {vscode.TextDocument} document
+ * @param {string} subroutineName
+ * @returns {{line: number, character: number} | null}
+ */
+function findDefinition(document, subroutineName) {
+    const text = document.getText();
+    const lines = text.split('\n');
+
+    const regex = new RegExp(`^\\s*subroutine\\s+${subroutineName}\\b`, 'i');
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (regex.test(line)) {
+            const character = line.indexOf(subroutineName);
+            return { line: i, character: character };
+        }
+    }
+
+    return null;
 }
 
 // This method is called when your extension is deactivated

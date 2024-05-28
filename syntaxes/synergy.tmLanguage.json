@@ -1,0 +1,16 @@
+{
+    "scopeName": "source.synergy",
+    "patterns": [
+        {
+            "match": "\\b(subroutine)\\b",
+            "name": "keyword.control.synergy"
+        },
+        {
+            "match": "\\b(end)\\b",
+            "name": "keyword.control.synergy"
+        }
+    ],
+    "repository": {},
+    "name": "Synergy/DE",
+    "fileTypes": ["dbl", "dbs"]
+}
