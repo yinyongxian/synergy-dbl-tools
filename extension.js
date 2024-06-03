@@ -46,9 +46,9 @@ function activate(context) {
 		const range = new vscode.Range(startPosition, endPosition);
 		const text = vscode.window.activeTextEditor.document.getText(range);
 		var functionLength = 0;
-		var index = text.toLowerCase().lastIndexOf(".subroutine");
+		var index = text.toLowerCase().lastIndexOf("subroutine");
 		if (index == -1){
-			index = text.toLowerCase().lastIndexOf(".function");
+			index = text.toLowerCase().lastIndexOf("function");
 			functionLength = 9
 		}
 		else {
@@ -266,69 +266,6 @@ function activate(context) {
 // How to implement go to definition of subroutine in synergy/ex language in visual studio code extension? 
 // incluede the detail Java Script code of Implement the logic to find the subroutine definition in current 
 // workspace. Use Java Script language.
-class SynergyDefinitionProvider {
-    /**
-     * @param {vscode.TextDocument} document
-     * @param {vscode.Position} position
-     * @param {vscode.CancellationToken} token
-     * @returns {vscode.ProviderResult<vscode.Definition>}
-     */
-    provideDefinition(document, position, token) {
-        const wordRange = document.getWordRangeAtPosition(position);
-        if (!wordRange) {
-            return null;
-        }
-
-        const word = document.getText(wordRange);
-
-        return findDefinitionInWorkspace(word).then(definition => {
-            if (definition) {
-                const uri = definition.uri;
-                const range = new vscode.Range(
-                    new vscode.Position(definition.line, definition.character),
-                    new vscode.Position(definition.line, definition.character + word.length)
-                );
-                return new vscode.Location(uri, range);
-            }
-            return null;
-        });
-    }
-}
-
-/**
- * Finds the definition of a subroutine in the workspace.
- * @param {string} subroutineName
- * @returns {Promise<{ uri: vscode.Uri, line: number, character: number } | null>}
- */
-function findDefinitionInWorkspace(subroutineName) {
-    const searchPattern = '**/*.dbl';
-    const regex = new RegExp(`^\\s*subroutine\\s+${subroutineName}\\b`, 'i');
-
-    // @ts-ignore
-    return vscode.workspace.findFiles(searchPattern).then(files => {
-        const promises = files.map(file => {
-            return vscode.workspace.openTextDocument(file).then(document => {
-                const text = document.getText();
-                const lines = text.split('\n');
-
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i];
-                    if (regex.test(line)) {
-                        const character = line.indexOf(subroutineName);
-                        return { uri: document.uri, line: i, character: character };
-                    }
-                }
-                return null;
-            });
-        });
-
-        return Promise.all(promises).then(results => {
-            // Filter out null results and return the first valid result
-            const definition = results.find(result => result !== null);
-            return definition || null;
-        });
-    });
-}
 
 // This method is called when your extension is deactivated
 function deactivate() {}
