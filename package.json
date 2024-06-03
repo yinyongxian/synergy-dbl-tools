@@ -204,22 +204,7 @@
           "group": "2_copy"
         }
       ]
-    },
-    "languages": [
-      {
-          "id": "synergy",
-          "aliases": ["Synergy/DE", "synergy"],
-          "extensions": [".dbl", ".dbs"],
-          "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-        {
-            "language": "synergy",
-            "scopeName": "source.synergy",
-            "path": "./syntaxes/synergy.tmLanguage.json"
-        }
-    ]
+    }
   },
   "scripts": {
     "lint": "eslint .",
