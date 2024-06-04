@@ -36,37 +36,54 @@ function activate(context) {
 	context.subscriptions.push(copyFileNameWithoutExtension);
 
 	var copyBreakCommand= vscode.commands.registerCommand("copy-break", function(){
-		const fileName = vscode.window.activeTextEditor.document.fileName;
-		let subroutineName = "";
 		const lineNumber = vscode.window.activeTextEditor.selection.start.line;
 		const textLine = vscode.window.activeTextEditor.document.lineAt(lineNumber);
 		const length = textLine.text.length;
 		const startPosition = new vscode.Position(0, 0);
 		const endPosition = new vscode.Position(lineNumber, length);
 		const range = new vscode.Range(startPosition, endPosition);
-		const text = vscode.window.activeTextEditor.document.getText(range);
-		var functionLength = 0;
-		var index = text.toLowerCase().lastIndexOf("subroutine");
-		if (index == -1){
-			index = text.toLowerCase().lastIndexOf("function");
-			functionLength = 9
-		}
-		else {
-			functionLength = 11
-		}
+		// const text = vscode.window.activeTextEditor.document.getText(range);
 
-		if (index !== -1) {
-			const textSubstring= text.substring(index + functionLength);
-			const textTrimStart = textSubstring.trimStart();
-			const indexEmpty = textTrimStart.indexOf(" ");
-			const indexComma = textTrimStart.indexOf(",");
-			const indexSemicolon = textTrimStart.indexOf(";");
-			const indexEndOfLine = textTrimStart.indexOf("\r\n");
-			const indexTab = textTrimStart.indexOf("\t");
-			const minIndex = Math.min(indexEmpty, indexComma, indexSemicolon, indexEndOfLine, indexTab);
-			if (minIndex > -1) {
-				subroutineName = textTrimStart.substring(0, minIndex);
-			}
+		var functionLength = 0;
+		let subroutineName = "";
+		var index = 0;
+		for (let i = lineNumber; i >= 0; i--) {
+			let text = vscode.window.activeTextEditor.document.lineAt(i).text;
+			// find "subroutine" or "function" in text, 
+			const semicolonIndex = text.toLowerCase().indexOf(";");
+			const subroutineIndex = text.toLowerCase().indexOf("subroutine");
+			const functionIndex = text.toLowerCase().indexOf("function");
+			if (subroutineIndex > -1 && (semicolonIndex === -1 || subroutineIndex < semicolonIndex)) {
+				index = subroutineIndex; 
+				functionLength = 11
+            }
+			else if (functionIndex > -1 && (semicolonIndex === -1 || functionIndex < semicolonIndex)) {
+				var regex = /(external\s*function)/;
+				const match = text.match(regex);
+				if (!match) {
+					index = functionIndex; 
+					functionLength = 9
+				}
+            }
+
+			if (functionLength > 0) {
+				const textSubstring= text.substring(index + functionLength);
+				const textTrimStart = textSubstring.trimStart();
+				const indexEmpty = textTrimStart.indexOf(" ");
+				const indexComma = textTrimStart.indexOf(",");
+				const indexSemicolon = textTrimStart.indexOf(";");
+				const indexEndOfLine = textTrimStart.indexOf("\r\n");
+				const indexTab = textTrimStart.indexOf("\t");
+				const minIndex = Math.min(indexEmpty, indexComma, indexSemicolon, indexEndOfLine, indexTab);
+				if (minIndex > -1) {
+					subroutineName = textTrimStart.substring(0, minIndex);
+				}
+				else {
+                    subroutineName = textTrimStart;
+                }
+				
+                break;
+            }
 		}
 
 		const method = subroutineName.trim().length > 0 ? subroutineName + ":" : "";
