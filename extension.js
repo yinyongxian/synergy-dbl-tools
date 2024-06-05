@@ -74,7 +74,9 @@ function activate(context) {
 				const indexSemicolon = textTrimStart.indexOf(";");
 				const indexEndOfLine = textTrimStart.indexOf("\r\n");
 				const indexTab = textTrimStart.indexOf("\t");
-				const minIndex = Math.min(indexEmpty, indexComma, indexSemicolon, indexEndOfLine, indexTab);
+				
+				// 数组中大于-1的最小值
+				const minIndex = Math.min(...[indexEmpty, indexComma, indexSemicolon, indexEndOfLine, indexTab].filter(n => n > -1));
 				if (minIndex > -1) {
 					subroutineName = textTrimStart.substring(0, minIndex);
 				}
