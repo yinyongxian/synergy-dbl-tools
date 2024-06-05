@@ -42,14 +42,11 @@ function activate(context) {
 		const startPosition = new vscode.Position(0, 0);
 		const endPosition = new vscode.Position(lineNumber, length);
 		const range = new vscode.Range(startPosition, endPosition);
-		// const text = vscode.window.activeTextEditor.document.getText(range);
-
 		var functionLength = 0;
 		let subroutineName = "";
 		var index = 0;
 		for (let i = lineNumber; i >= 0; i--) {
 			let text = vscode.window.activeTextEditor.document.lineAt(i).text;
-			// find "subroutine" or "function" in text, 
 			const semicolonIndex = text.toLowerCase().indexOf(";");
 			const subroutineIndex = text.toLowerCase().indexOf("subroutine");
 			const functionIndex = text.toLowerCase().indexOf("function");
@@ -74,8 +71,6 @@ function activate(context) {
 				const indexSemicolon = textTrimStart.indexOf(";");
 				const indexEndOfLine = textTrimStart.indexOf("\r\n");
 				const indexTab = textTrimStart.indexOf("\t");
-				
-				// 数组中大于-1的最小值
 				const minIndex = Math.min(...[indexEmpty, indexComma, indexSemicolon, indexEndOfLine, indexTab].filter(n => n > -1));
 				if (minIndex > -1) {
 					subroutineName = textTrimStart.substring(0, minIndex);
