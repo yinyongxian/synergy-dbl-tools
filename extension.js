@@ -47,14 +47,13 @@ function activate(context) {
 		var index = 0;
 		for (let i = lineNumber; i >= 0; i--) {
 			let text = vscode.window.activeTextEditor.document.lineAt(i).text;
-			const semicolonIndex = text.toLowerCase().indexOf(";");
 			const subroutineIndex = text.toLowerCase().indexOf("subroutine");
 			const functionIndex = text.toLowerCase().indexOf("function");
-			if (subroutineIndex > -1 && (semicolonIndex === -1 || subroutineIndex < semicolonIndex)) {
+			if (subroutineIndex > -1) {
 				index = subroutineIndex; 
 				functionLength = 11
             }
-			else if (functionIndex > -1 && (semicolonIndex === -1 || functionIndex < semicolonIndex)) {
+			else if (functionIndex > -1) {
 				var regex = /(external\s*function)/;
 				const match = text.match(regex);
 				if (!match) {
@@ -64,6 +63,14 @@ function activate(context) {
             }
 
 			if (functionLength > 0) {
+				const preText = text.substring(0, index);
+				const include = [';', '"'].some(char => preText.includes(char));
+				if (include) {
+					functionLength = 0;
+					subroutineName = "";
+					continue;
+				}
+
 				const textSubstring= text.substring(index + functionLength);
 				const textTrimStart = textSubstring.trimStart();
 				const indexEmpty = textTrimStart.indexOf(" ");
