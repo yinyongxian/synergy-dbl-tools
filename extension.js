@@ -46,6 +46,9 @@ function activate(context) {
 		let subroutineName = "";
 		var index = 0;
 		for (let i = lineNumber; i >= 0; i--) {
+			functionLength = 0;
+			subroutineName = "";
+
 			let text = vscode.window.activeTextEditor.document.lineAt(i).text;
 			const subroutineIndex = text.toLowerCase().indexOf("subroutine");
 			const functionIndex = text.toLowerCase().indexOf("function");
@@ -54,28 +57,28 @@ function activate(context) {
 				functionLength = 11
             }
 			else if (functionIndex > -1) {
-				var regex = /(external\s*function)/;
-				const match = text.match(regex);
-				if (!match) {
-					index = functionIndex; 
-					functionLength = 9
+				if (text.match(/(external\s*function)/)) {
+					continue;
 				}
+
+				if (!text.match(/\bfunction\b/)) {
+					continue;
+				}
+
+				index = functionIndex; 
+				functionLength = 9
             }
 
 			if (functionLength > 0) {
 				const preText = text.substring(0, index);
 				const include = [';', '"'].some(char => preText.includes(char));
 				if (include) {
-					functionLength = 0;
-					subroutineName = "";
 					continue;
 				}
 
 				const textSubstring= text.substring(index + functionLength);
 				const textTrimStart = textSubstring.trimStart();
 				if (textTrimStart.length === 0) {
-					functionLength = 0;
-					subroutineName = "";
 					continue;
 				}
 
