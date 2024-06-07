@@ -73,6 +73,12 @@ function activate(context) {
 
 				const textSubstring= text.substring(index + functionLength);
 				const textTrimStart = textSubstring.trimStart();
+				if (textTrimStart.length === 0) {
+					functionLength = 0;
+					subroutineName = "";
+					continue;
+				}
+
 				const indexEmpty = textTrimStart.indexOf(" ");
 				const indexComma = textTrimStart.indexOf(",");
 				const indexSemicolon = textTrimStart.indexOf(";");
