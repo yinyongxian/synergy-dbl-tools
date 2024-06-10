@@ -1,6 +1,4 @@
-# synergy-dbl-tools
-
-Synergy DBL Tools
+# Synergy DBL Tools
 
 ## Features
 
