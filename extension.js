@@ -71,7 +71,7 @@ function activate(context) {
 
 			if (functionLength > 0) {
 				const preText = text.substring(0, index);
-				const include = [';', '"'].some(char => preText.includes(char));
+				const include = [';', '"', '_'].some(char => preText.includes(char));
 				if (include) {
 					continue;
 				}
