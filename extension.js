@@ -287,6 +287,40 @@ function activate(context) {
 		vscode.env.clipboard.writeText(text)
 	});
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
+
+	var copyCompile = vscode.commands.registerCommand("compile", function(){
+		vscode.commands.executeCommand("copy-debug-compilation-and-show-result");
+
+		const { exec } = require('child_process');
+		const os = require('os');
+		const path = require('path');
+		const userFolder = os.homedir();
+		let shortcutPath = path.join(userFolder, "Desktop", "WW-ERP Command Shell Window.lnk")
+
+		exec(`start "" "${shortcutPath}"`, (error, stdout, stderr) => {
+			if (error) {
+			  console.error(`execute error: ${error}`);
+			  return;
+			}
+			console.log(`output: ${stdout}`);
+			console.error(`error: ${stderr}`);
+		  });
+
+		  setTimeout(function () {
+			const scriptPath = path.join(__dirname, 'scripts', 'paste.ps1');
+			exec(`powershell -ExecutionPolicy Bypass -File "${scriptPath}"`, (error, stdout, stderr) => {
+				if (error) {
+					console.error(`Execution error: ${error}`);
+					return;
+				}
+				console.log(`Output: ${stdout}`);
+				console.error(`Error: ${stderr}`);
+			});			
+		  }, 2000)
+
+		return
+	});
+	context.subscriptions.push(copyCompile);
 }
 
 

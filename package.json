@@ -2,10 +2,10 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
-  "icon": "Media/icon-tool.ico",
+  "icon": "medias/icon-tool.ico",
   "repository": {
     "type": "git",
     "url": "https://github.com/yinyongxian/synergy-dbl-tools"
@@ -99,6 +99,10 @@
       {
         "command": "copy-release-compilation-and-show-result",
         "title": "Copy Release Compilation And Show Result"
+      },
+      {
+        "command": "compile",
+        "title": "Compile"
       }
     ],
     "menus": {
@@ -192,6 +196,11 @@
           "command": "copy-release-compilation-and-show-result",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@28"
+        },
+        {
+          "command": "compile",
+          "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
+          "group": "9_cutcopypaste@29"
         }
       ],
       "editor/title/context": [
