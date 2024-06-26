@@ -4,7 +4,7 @@ try {
     [System.Windows.Forms.SendKeys]::SendWait("^v")
 
     # delay 3 seconds
-    Start-Sleep -Seconds 6
+    Start-Sleep -Seconds 5
 
     [System.Windows.Forms.SendKeys]::SendWait("%{F4}")
 
