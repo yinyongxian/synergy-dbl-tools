@@ -23,3 +23,4 @@
 * Copy Release Compilation
 * Copy Debug Compilation And Show Result
 * Copy Release Compilation And Show Result
+* Compile
