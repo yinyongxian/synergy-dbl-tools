@@ -64,6 +64,9 @@ function activate(context) {
 				if (!text.match(/\bfunction\b/)) {
 					continue;
 				}
+				else if (text.substring(0, functionIndex).trim().length > 1) {
+					 continue;
+				}
 
 				index = functionIndex; 
 				functionLength = 9
