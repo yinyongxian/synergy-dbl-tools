@@ -292,7 +292,7 @@ function activate(context) {
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
 
 	var copyCompile = vscode.commands.registerCommand("compile", function(){
-		vscode.commands.executeCommand("copy-debug-compilation-and-show-result");
+		vscode.commands.executeCommand("copy-debug-compilation");
 
 		const { exec } = require('child_process');
 		const os = require('os');
