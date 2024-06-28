@@ -291,7 +291,15 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
 
-	var copyCompile = vscode.commands.registerCommand("compile", function(){
+	var copyCompile = vscode.commands.registerCommand("compile", async function(){
+		const editor = vscode.window.activeTextEditor;
+        if (editor) {
+            const document = editor.document;
+            if (document.isDirty) { 
+                await document.save();
+            }
+        }
+
 		vscode.commands.executeCommand("copy-debug-compilation");
 
 		const { exec } = require('child_process');
