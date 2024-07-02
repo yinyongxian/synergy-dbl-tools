@@ -2,10 +2,10 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
-  "icon": "medias/icon-tool.ico",
+  "icon": "medias/synergy.ico",
   "repository": {
     "type": "git",
     "url": "https://github.com/yinyongxian/synergy-dbl-tools"
