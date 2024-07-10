@@ -369,8 +369,11 @@ function GetPaths() {
 
 		// others tabs e.g. Settings or webviews don't have URI
 		return null;
-	}));
-	const distinctPaths = [...new Set([...fsPaths.concat(documentFsPaths).concat(tabPaths)].filter(path => !path.startsWith("git") && !path.endsWith("git")))];
+	})).filter(Boolean);
+	const distinctPaths = [...new Set([...fsPaths.concat(documentFsPaths).concat(tabPaths)]
+	.filter(path => !path.startsWith("git") && 
+					!path.endsWith("git") &&
+					path !== null))];
 	return distinctPaths;
 }
 
