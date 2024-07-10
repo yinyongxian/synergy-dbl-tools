@@ -36,45 +36,15 @@ function activate(context) {
 	context.subscriptions.push(copyFileNameWithoutExtension);
 
 	var copyPaths= vscode.commands.registerCommand("copy-opened-file-paths", function(){
-		const fsPaths = vscode.workspace.textDocuments.map(doc => doc.uri.fsPath);
-		const documentFsPaths = vscode.window.visibleTextEditors.map(eidtor => eidtor.document.uri.fsPath);
-		const tabPaths = vscode.window.tabGroups.all.flatMap(({ tabs }) => tabs.map(tab => {
-			if (tab.input instanceof vscode.TabInputText || tab.input instanceof vscode.TabInputNotebook) {
-				return tab.input.uri.fsPath;
-			}
-
-			if (tab.input instanceof vscode.TabInputTextDiff || tab.input instanceof vscode.TabInputNotebookDiff) {
-				return tab.input.original.fsPath;
-			}
-
-			// others tabs e.g. Settings or webviews don't have URI
-			return null;
-		}));
-		const distinctPaths = [...new Set([...fsPaths.concat(documentFsPaths).concat(tabPaths)].filter(path => !path.startsWith("git") && !path.endsWith("git")))];
-		vscode.env.clipboard.writeText(distinctPaths.join("\n"))
+		const paths = GetPaths();
+		vscode.env.clipboard.writeText(paths.join("\n"))
 	});
 	context.subscriptions.push(copyPaths);
 
 	var copyRelativePaths= vscode.commands.registerCommand("copy-opened-file-relative-paths", function(){
-		const fsPaths = vscode.workspace.textDocuments.map(doc => doc.uri.path);
-		const documentFsPaths = vscode.window.visibleTextEditors.map(eidtor => eidtor.document.uri.path);
-		const tabPaths = vscode.window.tabGroups.all.flatMap(({ tabs }) => tabs.map(tab => {
-			if (tab.input instanceof vscode.TabInputText || tab.input instanceof vscode.TabInputNotebook) {
-				return tab.input.uri.path;
-			}
-
-			if (tab.input instanceof vscode.TabInputTextDiff || tab.input instanceof vscode.TabInputNotebookDiff) {
-				return tab.input.original.path;
-			}
-
-			// others tabs e.g. Settings or webviews don't have URI
-			return null;
-		}));
-		const distinctPaths = [...new Set([...fsPaths.concat(documentFsPaths).concat(tabPaths)]
-			.filter(path => !path.startsWith("git") && !path.endsWith("git")))]
-			.map(path => vscode.workspace.asRelativePath(path));
-
-		vscode.env.clipboard.writeText(distinctPaths.join("\n"))
+		const paths = GetPaths();
+		const relativePaths =paths.map(path => vscode.workspace.asRelativePath(path));
+		vscode.env.clipboard.writeText(relativePaths.join("\n"))
 	});
 	context.subscriptions.push(copyRelativePaths);
 
@@ -384,6 +354,25 @@ function activate(context) {
 
 // This method is called when your extension is deactivated
 function deactivate() {}
+
+function GetPaths() {
+	const fsPaths = vscode.workspace.textDocuments.map(doc => doc.uri.fsPath);
+	const documentFsPaths = vscode.window.visibleTextEditors.map(eidtor => eidtor.document.uri.fsPath);
+	const tabPaths = vscode.window.tabGroups.all.flatMap(({ tabs }) => tabs.map(tab => {
+		if (tab.input instanceof vscode.TabInputText || tab.input instanceof vscode.TabInputNotebook) {
+			return tab.input.uri.fsPath;
+		}
+
+		if (tab.input instanceof vscode.TabInputTextDiff || tab.input instanceof vscode.TabInputNotebookDiff) {
+			return tab.input.original.fsPath;
+		}
+
+		// others tabs e.g. Settings or webviews don't have URI
+		return null;
+	}));
+	const distinctPaths = [...new Set([...fsPaths.concat(documentFsPaths).concat(tabPaths)].filter(path => !path.startsWith("git") && !path.endsWith("git")))];
+	return distinctPaths;
+}
 
 module.exports = {
 	activate,
