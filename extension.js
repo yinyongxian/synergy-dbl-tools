@@ -43,7 +43,7 @@ function activate(context) {
 
 	var copyRelativePaths= vscode.commands.registerCommand("copy-opened-file-relative-paths", function(){
 		const paths = GetPaths();
-		const relativePaths =paths.map(path => vscode.workspace.asRelativePath(path));
+		const relativePaths =paths.map(path => vscode.workspace.asRelativePath(path, true));
 		vscode.env.clipboard.writeText(relativePaths.join("\n"))
 	});
 	context.subscriptions.push(copyRelativePaths);
