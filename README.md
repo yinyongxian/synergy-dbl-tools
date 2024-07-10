@@ -4,6 +4,8 @@
 
 * Copy File Name
 * Copy File Name Without Extension
+* Copy Paths
+* Copy Relative Paths
 <br>
 
 * Copy Break
