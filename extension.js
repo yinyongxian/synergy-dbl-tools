@@ -5,6 +5,8 @@ const path = require('path');
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 
+const fs = require("fs");
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 
@@ -305,6 +307,7 @@ function activate(context) {
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
 
 	var copyCompile = vscode.commands.registerCommand("compile", async function(){
+		// Save the document
 		const editor = vscode.window.activeTextEditor;
         if (editor) {
             const document = editor.document;
@@ -336,6 +339,24 @@ function activate(context) {
 				if (error) {
 					console.error(`Execution error: ${error}`);
 					return;
+				}
+				else {
+					let fileName = vscode.window.activeTextEditor.document.fileName;
+					let parsedPath = path.parse(fileName);
+					let directoryPath = path.parse(parsedPath.dir);
+					let parentName = directoryPath.base;
+					let logPath = path.join(userFolder, "tcm", `${parentName}.log`)
+					fs.readFile(logPath, 'utf8', (err, data) => {				
+						if (err) {
+							console.error(err);
+							return;
+						}
+						else {
+							if (data.includes("%DBL")) {
+								vscode.window.showTextDocument(vscode.Uri.file(logPath));
+							}
+						}
+					});
 				}
 				console.log(`Output: ${stdout}`);
 				console.error(`Error: ${stderr}`);
