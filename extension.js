@@ -89,7 +89,7 @@ function activate(context) {
 
 			if (functionLength > 0) {
 				const preText = text.substring(0, index);
-				const include = [';', '"', '_'].some(char => preText.includes(char));
+				const include = [";", "\"", "_", ".title"].some(char => preText.includes(char));
 				if (include) {
 					continue;
 				}
