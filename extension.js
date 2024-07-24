@@ -39,14 +39,14 @@ function activate(context) {
 
 	var copyPaths= vscode.commands.registerCommand("copy-opened-file-paths", function(){
 		const paths = GetPaths();
-		vscode.env.clipboard.writeText(paths.join("\n"))
+		vscode.env.clipboard.writeText(paths.sort().join("\n"))
 	});
 	context.subscriptions.push(copyPaths);
 
 	var copyRelativePaths= vscode.commands.registerCommand("copy-opened-file-relative-paths", function(){
 		const paths = GetPaths();
 		const relativePaths =paths.map(path => vscode.workspace.asRelativePath(path, true));
-		vscode.env.clipboard.writeText(relativePaths.join("\n"))
+		vscode.env.clipboard.writeText(relativePaths.sort().join("\n"))
 	});
 	context.subscriptions.push(copyRelativePaths);
 
