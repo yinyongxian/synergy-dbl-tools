@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.51",
+  "version": "0.0.52",
   "publisher": "synergy-dbl-tools",
   "license":"MIT",
   "icon": "medias/synergy.ico",
@@ -29,13 +29,17 @@
         "title": "Copy Filename Without Extension"
       },
       {
+        "command": "copy-all-filenames",
+        "title": "Copy All Filenames"
+      },      
+      {
         "command": "copy-opened-file-paths",
         "title": "Copy Paths"
       },
       {
         "command": "copy-opened-file-relative-paths",
         "title": "Copy Relative Paths"
-      },
+      },      
       {
         "command": "copy-break",
         "title": "Copy Break"
@@ -220,6 +224,10 @@
           "command": "copy-file-name-without-extension",
           "group": "2_copy"
         },
+        {
+          "command": "copy-all-filenames",
+          "group": "2_copy"
+        },        
         {
           "command": "copy-opened-file-paths",
           "group": "2_copy"

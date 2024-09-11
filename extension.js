@@ -37,6 +37,13 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyFileNameWithoutExtension);
 
+	var copyAllFilenames= vscode.commands.registerCommand("copy-all-filenames", function(){
+		const paths = GetPaths();
+		const filenames = paths.map(p => path.basename(p)).sort();
+		vscode.env.clipboard.writeText(filenames.join("\n"))
+	});
+	context.subscriptions.push(copyAllFilenames);
+
 	var copyPaths= vscode.commands.registerCommand("copy-opened-file-paths", function(){
 		const paths = GetPaths();
 		vscode.env.clipboard.writeText(paths.sort().join("\n"))
