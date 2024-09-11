@@ -2,6 +2,7 @@
 
 ## Features
 
+* Copy All Filenames
 * Copy File Name
 * Copy File Name Without Extension
 * Copy Paths
