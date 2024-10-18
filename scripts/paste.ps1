@@ -5,8 +5,8 @@ try {
 
     [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
 
-    # delay 3 seconds
-    Start-Sleep -Seconds 5
+    # delay x seconds
+    Start-Sleep -Seconds 10
 
     [System.Windows.Forms.SendKeys]::SendWait("%{F4}")
 
