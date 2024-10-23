@@ -7,7 +7,7 @@ try {
     Start-Sleep -Seconds 1
     [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
 
-    Start-Sleep -Seconds 5
+    Start-Sleep -Seconds 8
 
     [System.Windows.Forms.SendKeys]::SendWait("%{F4}")
 
