@@ -1,11 +1,12 @@
 Add-Type -AssemblyName System.Windows.Forms
 
 try {
+    Start-Sleep -Seconds 1
     [System.Windows.Forms.SendKeys]::SendWait("^v")
-
+    
+    Start-Sleep -Seconds 1
     [System.Windows.Forms.SendKeys]::SendWait("{ENTER}")
 
-    # delay x seconds
     Start-Sleep -Seconds 5
 
     [System.Windows.Forms.SendKeys]::SendWait("%{F4}")
