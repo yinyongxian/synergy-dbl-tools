@@ -359,7 +359,9 @@ function activate(context) {
 							return;
 						}
 						else {
-							if (data.includes("%DBL")) {
+							const substrings = ["%DBL", "Invalid overlay field specified"];
+							const anyIncluded = substrings.some(substring => data.includes(substring));
+							if (anyIncluded) {
 								vscode.window.showTextDocument(vscode.Uri.file(logPath));
 							}
 						}
