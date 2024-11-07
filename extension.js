@@ -359,7 +359,11 @@ function activate(context) {
 							return;
 						}
 						else {
-							const substrings = ["%DBL", "Invalid overlay field specified"];
+							const substrings = [
+								"%DBL", 
+								"Invalid overlay field specified",
+								"%SCRIPT"
+							];
 							const anyIncluded = substrings.some(substring => data.includes(substring));
 							if (anyIncluded) {
 								vscode.window.showTextDocument(vscode.Uri.file(logPath));
