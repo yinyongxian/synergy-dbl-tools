@@ -4,7 +4,7 @@
   "description": "Synergy DBL Tools",
   "version": "0.0.59",
   "publisher": "synergy-dbl-tools",
-  "license":"MIT",
+  "license": "MIT",
   "icon": "medias/synergy.ico",
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
       {
         "command": "copy-all-filenames",
         "title": "Copy All Filenames"
-      },      
+      },
       {
         "command": "copy-opened-file-paths",
         "title": "Copy Paths"
@@ -39,7 +39,7 @@
       {
         "command": "copy-opened-file-relative-paths",
         "title": "Copy Relative Paths"
-      },      
+      },
       {
         "command": "copy-break",
         "title": "Copy Break"
@@ -227,7 +227,7 @@
         {
           "command": "copy-all-filenames",
           "group": "2_copy"
-        },        
+        },
         {
           "command": "copy-opened-file-paths",
           "group": "2_copy"
@@ -245,12 +245,12 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
     "@types/mocha": "^10.0.6",
-    "@types/node": "18.x",
-    "eslint": "^8.54.0",
-    "typescript": "^5.3.2",
+    "@types/node": "^18.19.67",
+    "@types/vscode": "^1.95.0",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
   }
 }

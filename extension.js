@@ -59,11 +59,6 @@ function activate(context) {
 
 	var copyBreakCommand= vscode.commands.registerCommand("copy-break", function(){
 		const lineNumber = vscode.window.activeTextEditor.selection.start.line;
-		const textLine = vscode.window.activeTextEditor.document.lineAt(lineNumber);
-		const length = textLine.text.length;
-		const startPosition = new vscode.Position(0, 0);
-		const endPosition = new vscode.Position(lineNumber, length);
-		const range = new vscode.Range(startPosition, endPosition);
 		var functionLength = 0;
 		let subroutineName = "";
 		var index = 0;
@@ -324,6 +319,10 @@ function activate(context) {
         }
 
 		vscode.commands.executeCommand("copy-debug-compilation");
+		
+		// get text form clipbord
+		vscode.env.clipboard.readText();
+
 
 		const { exec } = require('child_process');
 		const os = require('os');
@@ -339,6 +338,11 @@ function activate(context) {
 			console.log(`output: ${stdout}`);
 			console.error(`error: ${stderr}`);
 		  });
+
+		// when exec completed, continute
+		
+
+
 
 		  setTimeout(function () {
 			const scriptPath = path.join(__dirname, 'scripts', 'paste.ps1');
