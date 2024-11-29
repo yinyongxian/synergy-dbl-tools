@@ -319,10 +319,7 @@ function activate(context) {
         }
 
 		vscode.commands.executeCommand("copy-debug-compilation");
-		
-		// get text form clipbord
-		vscode.env.clipboard.readText();
-
+		const debugCompileText = vscode.env.clipboard.readText();
 
 		const { exec } = require('child_process');
 		const os = require('os');
@@ -340,7 +337,7 @@ function activate(context) {
 		  });
 
 		// when exec completed, continute
-		
+
 
 
 
