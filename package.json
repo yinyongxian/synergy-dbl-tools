@@ -254,6 +254,6 @@
     "typescript": "^5.3.2"
   },
   "dependencies": {
-    "@nut-tree/nut-js": "^4.2.0"
+    "@nut-tree-fork/nut-js": "^4.2.2"
   }
 }
