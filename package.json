@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "publisher": "synergy-dbl-tools",
   "license": "MIT",
   "icon": "medias/synergy.ico",
@@ -252,5 +252,8 @@
     "@vscode/test-electron": "^2.3.8",
     "eslint": "^8.54.0",
     "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "@nut-tree/nut-js": "^4.2.0"
   }
 }

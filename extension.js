@@ -7,6 +7,9 @@ const vscode = require('vscode');
 
 const fs = require("fs");
 
+const { keyboard, Key } = require('@nut-tree/nut-js');
+keyboard.config.autoDelayMs = 100;
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 
@@ -319,63 +322,87 @@ function activate(context) {
         }
 
 		vscode.commands.executeCommand("copy-debug-compilation");
-		const debugCompileText = vscode.env.clipboard.readText();
-
-		const { exec } = require('child_process');
+		const { exec} = require('child_process');
 		const os = require('os');
 		const path = require('path');
 		const userFolder = os.homedir();
 		let shortcutPath = path.join(userFolder, "Desktop", "WW-ERP Command Shell Window.lnk")
-
-		exec(`start "" "${shortcutPath}"`, (error, stdout, stderr) => {
+		let commandText =  `"${shortcutPath}"`
+		exec(commandText, (error) => {
 			if (error) {
-			  console.error(`execute error: ${error}`);
-			  return;
+				console.error(`execute error: ${error}`);
+				return;
 			}
-			console.log(`output: ${stdout}`);
-			console.error(`error: ${stderr}`);
-		  });
+		});
 
-		// when exec completed, continute
+		await new Promise(resolve => setTimeout(resolve, 1000));
 
+		let startTime = Date.now();
 
+		// Ctrl + V
+		await (async () => {
+			try {
+				await keyboard.pressKey(Key.LeftControl);
+				await keyboard.pressKey(Key.V);
+		
+				console.log("Ctrl + V executed successfully");
+			} catch (error) {
+				console.error("Error:", error);
+			} finally {
+				await keyboard.releaseKey(Key.V);
+				await keyboard.releaseKey(Key.LeftControl);
+			}
+		})();
 
+		await keyboard.type(Key.Enter);
 
-		  setTimeout(function () {
-			const scriptPath = path.join(__dirname, 'scripts', 'paste.ps1');
-			exec(`powershell -ExecutionPolicy Bypass -File "${scriptPath}"`, (error, stdout, stderr) => {
-				if (error) {
-					console.error(`Execution error: ${error}`);
-					return;
-				}
-				else {
-					let fileName = vscode.window.activeTextEditor.document.fileName;
-					let parsedPath = path.parse(fileName);
-					let directoryPath = path.parse(parsedPath.dir);
-					let parentName = directoryPath.base;
-					let logPath = path.join(userFolder, "tcm", `${parentName}.log`)
-					fs.readFile(logPath, 'utf8', (err, data) => {				
-						if (err) {
-							console.error(err);
-							return;
+		const intervalId = setInterval(() => {
+			let fileName = vscode.window.activeTextEditor.document.fileName;
+			let parsedPath = path.parse(fileName);
+			let directoryPath = path.parse(parsedPath.dir);
+			let parentName = directoryPath.base;
+			let logPath = path.join(userFolder, "tcm", `${parentName}.log`)
+			fs.stat(logPath, async (err, stats) => {
+				if (err) {
+					console.error(err);
+				} else {
+					const now = Date.now();
+					const elapsedTimeInMinutes  = now - startTime > 120000;
+					if (elapsedTimeInMinutes) {
+						clearInterval(intervalId);
+					}
+					else {
+						const modifiedRecently = stats.mtimeMs - startTime > 0 && now - stats.mtimeMs - 3000 > 0
+						if (modifiedRecently) {
+							clearInterval(intervalId);
+	
+							const scriptPath = path.join(__dirname, 'scripts', 'paste.ps1');
+							exec(`powershell -ExecutionPolicy Bypass -File "${scriptPath}"`, () => {
+								
+							});
+							
+							fs.readFile(logPath, 'utf8', (err, data) => {				
+								if (err) {
+									console.error(err);
+									return;
+								}
+								else {
+									const substrings = [
+										"%DBL", 
+										"Invalid overlay field specified",
+										"%SCRIPT"
+									];
+									const anyIncluded = substrings.some(substring => data.includes(substring));
+									if (anyIncluded) {
+										vscode.window.showTextDocument(vscode.Uri.file(logPath));
+									}
+								}
+							});
 						}
-						else {
-							const substrings = [
-								"%DBL", 
-								"Invalid overlay field specified",
-								"%SCRIPT"
-							];
-							const anyIncluded = substrings.some(substring => data.includes(substring));
-							if (anyIncluded) {
-								vscode.window.showTextDocument(vscode.Uri.file(logPath));
-							}
-						}
-					});
+					}
 				}
-				console.log(`Output: ${stdout}`);
-				console.error(`Error: ${stderr}`);
-			});			
-		  }, 2000)
+			});
+		}, 1000);
 
 		return
 	});
