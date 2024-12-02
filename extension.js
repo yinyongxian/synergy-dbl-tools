@@ -7,7 +7,7 @@ const vscode = require('vscode');
 
 const fs = require("fs");
 
-const { keyboard, Key } = require('@nut-tree/nut-js');
+const { keyboard, Key } = require('@nut-tree-fork/nut-js');
 keyboard.config.autoDelayMs = 100;
 
 // This method is called when your extension is activated
