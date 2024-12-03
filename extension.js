@@ -17,6 +17,8 @@ keyboard.config.autoDelayMs = 100;
 // https://code.visualstudio.com/api
 // https://marketplace.visualstudio.com/manage/publishers/synergy-dbl-tools
 
+// Publish: vsce package --> vsce publish
+
 /**
  * @param {vscode.ExtensionContext} context
  */
