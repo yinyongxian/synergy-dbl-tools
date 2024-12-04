@@ -1,7 +1,7 @@
 Add-Type -AssemblyName System.Windows.Forms
 
 try {
-    Start-Sleep -Seconds 5
+    Start-Sleep -Seconds 3
 
     # Simulate Alt+F4 to close the window
     [System.Windows.Forms.SendKeys]::SendWait("%{F4}")
