@@ -1,10 +1,11 @@
 // The module 'vscode' contains the VS Code extensibility API
 
-const path = require('path');
 
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 
+const os = require('os');
+const path = require('path');
 const fs = require("fs");
 
 const { keyboard, Key } = require('@nut-tree-fork/nut-js');
@@ -325,11 +326,16 @@ function activate(context) {
 
 		vscode.commands.executeCommand("copy-debug-compilation");
 		const { exec} = require('child_process');
-		const os = require('os');
-		const path = require('path');
+		
 		const userFolder = os.homedir();
-		let shortcutPath = path.join(userFolder, "Desktop", "WW-ERP Command Shell Window.lnk")
-		let commandText =  `"${shortcutPath}"`
+		let commandShellPath = path.join(userFolder, "Desktop", "WW-ERP Command Shell Window.lnk")
+		const config = vscode.workspace.getConfiguration('synergyDBLTools');
+		const shellPath = config.get('commandShellPath').trim();
+		if (shellPath) {
+			commandShellPath = shellPath;
+		}
+
+		let commandText =  `"${commandShellPath}"`
 		exec(commandText, (error) => {
 			if (error) {
 				console.error(`execute error: ${error}`);

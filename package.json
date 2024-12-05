@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.65",
+  "version": "0.0.66",
   "publisher": "synergy-dbl-tools",
   "license": "MIT",
   "icon": "medias/synergy.ico",
@@ -237,6 +237,17 @@
           "group": "2_copy"
         }
       ]
+    },
+    "configuration": {
+      "type": "string",
+      "title": "Synergy DBL Tools",
+      "properties": {
+          "synergyDBLTools.commandShellPath": {
+              "type": "string",
+              "default": "",
+              "description": "WW-ERP Command Shell Window Path"
+          }
+      }
     }
   },
   "scripts": {
