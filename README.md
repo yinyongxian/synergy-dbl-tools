@@ -27,3 +27,8 @@
 * Copy Debug Compilation And Show Result
 * Copy Release Compilation And Show Result
 * Compile
+<br>
+
+## Settings
+
+* Set the custom WW-ERP Command Shell Window path
