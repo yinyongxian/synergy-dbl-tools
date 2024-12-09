@@ -14,7 +14,7 @@
     "vscode": "^1.95.0"
   },
   "categories": [
-    "Other"
+    "Debuggers"
   ],
   "activationEvents": [],
   "main": "./extension.js",
