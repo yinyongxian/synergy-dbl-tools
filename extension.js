@@ -343,7 +343,7 @@ function activate(context) {
 			}
 		});
 
-		await new Promise(resolve => setTimeout(resolve, 1000));
+		await new Promise(resolve => setTimeout(resolve, 2000));
 
 		let startTime = Date.now();
 
@@ -380,7 +380,7 @@ function activate(context) {
 						clearInterval(intervalId);
 					}
 					else {
-						const modifiedRecently = stats.mtimeMs - startTime > 0 && now - stats.mtimeMs - 3000 > 0
+						const modifiedRecently = stats.mtimeMs - startTime > 0 && now - stats.mtimeMs - 2000 > 0
 						if (modifiedRecently) {
 							clearInterval(intervalId);
 	
