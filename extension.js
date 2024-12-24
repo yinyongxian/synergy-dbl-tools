@@ -384,11 +384,12 @@ function activate(context) {
 						if (modifiedRecently) {
 							clearInterval(intervalId);
 	
-							const scriptPath = path.join(__dirname, 'scripts', 'paste.ps1');
+							const scriptPath = path.join(__dirname, 'scripts', 'close.ps1');
 							exec(`powershell -ExecutionPolicy Bypass -File "${scriptPath}"`, () => {
 								
 							});
 							
+							await new Promise(resolve => setTimeout(resolve, 1000));
 							fs.readFile(logPath, 'utf8', (err, data) => {				
 								if (err) {
 									console.error(err);
