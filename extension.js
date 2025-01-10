@@ -375,7 +375,7 @@ function activate(context) {
 					console.error(err);
 				} else {
 					const now = Date.now();
-					const elapsedTimeInMinutes  = now - startTime > 120000;
+					const elapsedTimeInMinutes  = now - startTime > 60000;
 					if (elapsedTimeInMinutes) {
 						clearInterval(intervalId);
 					}
@@ -411,7 +411,7 @@ function activate(context) {
 					}
 				}
 			});
-		}, 1000);
+		}, 100);
 
 		return
 	});
