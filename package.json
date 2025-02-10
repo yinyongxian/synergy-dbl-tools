@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.70",
+  "version": "0.0.71",
   "publisher": "synergy-dbl-tools",
   "license": "MIT",
   "icon": "medias/synergy.ico",
@@ -242,11 +242,11 @@
       "type": "string",
       "title": "Synergy DBL Tools",
       "properties": {
-          "synergyDBLTools.commandShellPath": {
-              "type": "string",
-              "default": "",
-              "description": "WW-ERP Command Shell Window Path"
-          }
+        "synergyDBLTools.commandShellPath": {
+          "type": "string",
+          "default": "",
+          "description": "WW-ERP Command Shell Window Path"
+        }
       }
     }
   },
@@ -257,7 +257,7 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
-    "@types/node": "^18.19.67",
+    "@types/node": "^18.19.75",
     "@types/vscode": "^1.95.0",
     "@vscode/test-cli": "^0.0.4",
     "@vscode/test-electron": "^2.3.8",
