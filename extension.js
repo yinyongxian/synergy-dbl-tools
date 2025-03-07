@@ -314,7 +314,7 @@ function activate(context) {
 	});
 	context.subscriptions.push(copyReleaseCompilationCommandAndShowResult);
 
-	var copyCompile = vscode.commands.registerCommand("compile", async function(){
+	var compile = vscode.commands.registerCommand("compile", async function(){
 		// Save the document
 		const editor = vscode.window.activeTextEditor;
         if (editor) {
@@ -347,20 +347,7 @@ function activate(context) {
 
 		let startTime = Date.now();
 
-		// Ctrl + V
-		await (async () => {
-			try {
-				await keyboard.pressKey(Key.LeftControl);
-				await keyboard.pressKey(Key.V);
-		
-				console.log("Ctrl + V executed successfully");
-			} catch (error) {
-				console.error("Error:", error);
-			} finally {
-				await keyboard.releaseKey(Key.V);
-				await keyboard.releaseKey(Key.LeftControl);
-			}
-		})();
+		await paste();
 
 		await keyboard.type(Key.Enter);
 
@@ -384,10 +371,7 @@ function activate(context) {
 						if (modifiedRecently) {
 							clearInterval(intervalId);
 	
-							const scriptPath = path.join(__dirname, 'scripts', 'close.ps1');
-							exec(`powershell -ExecutionPolicy Bypass -File "${scriptPath}"`, () => {
-								
-							});
+							await closeWinodw();
 							
 							await new Promise(resolve => setTimeout(resolve, 1000));
 							fs.readFile(logPath, 'utf8', (err, data) => {				
@@ -403,7 +387,7 @@ function activate(context) {
 									];
 									const anyIncluded = substrings.some(substring => data.includes(substring));
 									if (anyIncluded) {
-										vscode.window.showTextDocument(vscode.Uri.file(logPath));
+										vscode.window.showTextDocument(vscode.Uri.file(logPath), {preview: false});
 									}
 								}
 							});
@@ -415,7 +399,75 @@ function activate(context) {
 
 		return
 	});
-	context.subscriptions.push(copyCompile);
+	context.subscriptions.push(compile);
+
+	var viewIsam = vscode.commands.registerCommand("view-isam", async function(){
+		const config = vscode.workspace.getConfiguration('synergyDBLTools');
+		const isamFolderPath = config.get('isamFolderPath').trim();
+
+		vscode.window.showOpenDialog({
+			canSelectFiles: true,
+			canSelectFolders: false,
+			canSelectMany: false,
+			defaultUri: vscode.Uri.file(isamFolderPath),
+			openLabel: 'Select ISAM file'
+		}).then(async fileUri => {
+			if (fileUri && fileUri.length > 0) {
+				const filePath = fileUri[0].fsPath;
+				const newFilePath = filePath.replace(/\.[^/.]+$/, '.txt');
+				if (fs.existsSync(newFilePath)) {
+					fs.unlinkSync(newFilePath);
+				}
+
+				const userFolder = os.homedir();
+				let commandShellPath = path.join(userFolder, "Desktop", "WW-ERP Command Shell Window.lnk")
+				const config = vscode.workspace.getConfiguration('synergyDBLTools');
+				const shellPath = config.get('commandShellPath').trim();
+				if (shellPath) {
+					commandShellPath = shellPath;
+				}
+		
+				let commandText =  `"${commandShellPath}"`
+				const { exec} = require('child_process');
+				exec(commandText, (error) => {
+					if (error) {
+						console.error(`execute error: ${error}`);
+						return;
+					}
+				});
+		
+				await new Promise(resolve => setTimeout(resolve, 3000));
+
+				await keyboard.pressKey(Key.I)
+				await keyboard.pressKey(Key.S)
+				await keyboard.pressKey(Key.L)
+				await keyboard.pressKey(Key.O)
+				await keyboard.pressKey(Key.A)
+				await keyboard.pressKey(Key.D)
+				await keyboard.pressKey(Key.Enter)
+				await delaySeconds(1)
+
+				await keyboard.pressKey(Key.U)
+				await keyboard.pressKey(Key.Enter)
+
+				vscode.env.clipboard.writeText(filePath)
+				await paste();
+				await keyboard.pressKey(Key.Enter)
+
+				vscode.env.clipboard.writeText(newFilePath)
+				await paste();
+				await keyboard.pressKey(Key.Enter)
+
+				await keyboard.pressKey(Key.Enter)
+
+				await delaySeconds(10)
+
+				await closeWinodw();
+				vscode.window.showTextDocument(vscode.Uri.file(newFilePath), {preview: false});
+			}
+		})
+	});
+	context.subscriptions.push(viewIsam);
 }
 
 
@@ -446,6 +498,43 @@ function GetPaths() {
 					!path.endsWith("git") &&
 					path !== null))];
 	return distinctPaths;
+}
+
+async function paste() {
+			// Ctrl + V
+			await (async () => {
+				try {
+					await keyboard.pressKey(Key.LeftControl);
+					await keyboard.pressKey(Key.V);
+			
+					console.log("Ctrl + V executed successfully");
+				} catch (error) {
+					console.error("Error:", error);
+				} finally {
+					await keyboard.releaseKey(Key.V);
+					await keyboard.releaseKey(Key.LeftControl);
+				}
+			})();
+}
+
+async function closeWinodw() {
+	await (async () => {
+		try {
+			await keyboard.pressKey(Key.LeftAlt);
+			await keyboard.pressKey(Key.F4);
+	
+			console.log("Ctrl + V executed successfully");
+		} catch (error) {
+			console.error("Error:", error);
+		} finally {
+			await keyboard.releaseKey(Key.LeftAlt);
+			await keyboard.releaseKey(Key.F4);
+		}
+	})();
+}
+
+async function delaySeconds(seconds) {
+	await new Promise(resolve => setTimeout(resolve, seconds * 1000));
 }
 
 module.exports = {

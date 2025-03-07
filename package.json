@@ -2,7 +2,7 @@
   "name": "synergy-dbl-tools",
   "displayName": "Synergy DBL Tools",
   "description": "Synergy DBL Tools",
-  "version": "0.0.71",
+  "version": "0.0.72",
   "publisher": "synergy-dbl-tools",
   "license": "MIT",
   "icon": "medias/synergy.ico",
@@ -115,6 +115,10 @@
       {
         "command": "compile",
         "title": "Compile"
+      },
+      {
+        "command": "view-isam",
+        "title": "View ISAM"
       }
     ],
     "menus": {
@@ -213,6 +217,11 @@
           "command": "compile",
           "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
           "group": "9_cutcopypaste@29"
+        },
+        {
+          "command": "view-isam",
+          "when": "resourceExtname =~ /\\.(def|fdl|dbl|ctl|wsc|mes|irl|itp|mak|idl)$/",
+          "group": "9_cutcopypaste@30"
         }
       ],
       "editor/title/context": [
@@ -246,6 +255,11 @@
           "type": "string",
           "default": "",
           "description": "WW-ERP Command Shell Window Path"
+        },
+        "synergyDBLTools.isamFolderPath": {
+          "type": "string",
+          "default": "",
+          "description": "WW-ERP ISAM Folder Path"
         }
       }
     }
@@ -266,7 +280,7 @@
   "dependencies": {
     "@eslint/config-array": "^0.19.0",
     "@eslint/object-schema": "^2.1.4",
-    "@nut-tree-fork/nut-js": "^4.2.2",
+    "@nut-tree-fork/nut-js": "^4.2.4",
     "eslint": "^9.16.0"
   }
 }
