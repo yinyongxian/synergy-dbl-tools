@@ -27,6 +27,7 @@
 * Copy Debug Compilation And Show Result
 * Copy Release Compilation And Show Result
 * Compile
+* View ISAM
 <br>
 
 ## Settings

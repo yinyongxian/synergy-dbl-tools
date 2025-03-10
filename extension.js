@@ -460,7 +460,17 @@ function activate(context) {
 
 				await keyboard.pressKey(Key.Enter)
 
-				await delaySeconds(10)
+				let maxWaitSeconds = 3 * 60;
+				while (true) {
+					await delaySeconds(1)
+					if (maxWaitSeconds-- < 0) {
+						break;
+					}
+
+					if (fs.existsSync(newFilePath) && fs.statSync(newFilePath).mtimeMs < Date.now() - 2000) {
+						break;
+					}
+				}
 
 				await closeWinodw();
 				vscode.window.showTextDocument(vscode.Uri.file(newFilePath), {preview: false});
