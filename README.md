@@ -32,4 +32,6 @@
 
 ## Settings
 
-* Set the custom WW-ERP Command Shell Window path
+* WW-ERP Command Shell Window path
+* Isam Folder Path
+
