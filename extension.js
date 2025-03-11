@@ -8,7 +8,7 @@ const os = require('os');
 const path = require('path');
 const fs = require("fs");
 
-const { keyboard, Key } = require('@nut-tree-fork/nut-js');
+const { getWindows, keyboard, Key } = require('@nut-tree-fork/nut-js');
 keyboard.config.autoDelayMs = 100;
 
 // This method is called when your extension is activated
@@ -371,7 +371,7 @@ function activate(context) {
 						if (modifiedRecently) {
 							clearInterval(intervalId);
 	
-							await closeWinodw();
+							await closeCommandWindow();
 							
 							await new Promise(resolve => setTimeout(resolve, 1000));
 							fs.readFile(logPath, 'utf8', (err, data) => {				
@@ -472,7 +472,7 @@ function activate(context) {
 					}
 				}
 
-				await closeWinodw();
+				await closeCommandWindow();
 				vscode.window.showTextDocument(vscode.Uri.file(newFilePath), {preview: false});
 			}
 		})
@@ -541,6 +541,30 @@ async function closeWinodw() {
 			await keyboard.releaseKey(Key.F4);
 		}
 	})();
+}
+
+async function closeWinodwWIthTitle(titleSubstring) {
+	try {
+		const windows = await getWindows();
+        for (const win of windows) {
+            const winTitle = await win.getTitle();
+            if (winTitle.includes(titleSubstring)) {
+				win.focus();
+				closeWinodw();
+
+                console.log(`Closed window with title: ${winTitle}`);
+                return;
+            }
+        }
+
+        console.log(`No window found with title containing: ${titleSubstring}`);
+    } catch (error) {
+        console.error(`Error closing window: ${error}`);
+    }
+}
+
+async function closeCommandWindow() {
+	closeWinodwWIthTitle("_config.tcm");
 }
 
 async function delaySeconds(seconds) {
